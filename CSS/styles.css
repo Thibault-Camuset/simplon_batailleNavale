@@ -1,0 +1,575 @@
+/* Image de fond, polices spéciales, et conditions générales */
+body {
+    background-image: url("../IMG/fond2.jpg");
+    background-size:cover;
+    font-family: 'Press Start 2P', cursive;
+    font-size:0;
+    margin:0;
+    padding:0;
+    color:#00ff00;
+}
+
+/* Affichage principal, qui sera caché et visible au fur et à mesure des étapes */
+#containerAccueil, #containerDifficulty, #containerGameGrid {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    top:30vh;
+    margin-left:auto;
+    margin-right:auto;
+    width:20vw;
+    font-weight: bold;
+    text-align:center;
+    font-size:20px;
+}
+
+/* Placement des images des planètes sur le fonc, qui seront utilisées pour certaines actions */
+.imgPlanet {
+    position:fixed;
+    width:150px;
+    height:150px;
+}
+
+#imgMercure {
+    top:5vh;
+    right:10vw;
+}
+
+#imgVenus {
+    bottom:15vh;
+    right:25vw;
+}
+
+#imgJupiters {
+    bottom:10vh;
+    left:10vw;
+}
+
+#imgMars {
+    top:30vh;
+    left:15vw;
+}
+
+#imgTerre {
+    top:3vh;
+    left:45vw;
+}
+
+#imgSaturne {
+    bottom:3vh;
+    left:35vw;
+    width:250px;
+    height:250px;
+}
+
+#imgLune {
+    top:4vh;
+    left:53vw;
+    width:50px;
+    height:50px;
+}
+
+#imgNeptune {
+    top:35vh;
+    right:27vw;
+    width:75px;
+    height:75px;
+}
+
+#imgUranus {
+    height:100px;
+    width:100px;
+}
+
+.uranusPos1 {
+    position: fixed;
+    top:50vh;
+    right:3vw; 
+}
+
+.uranusPos2 {
+    position: fixed;
+    top:3vh;
+    right:75vw; 
+}
+
+.uranusPos3 {
+    position: fixed;
+    top:85vh;
+    right:35vw; 
+}
+
+
+
+/* Page d'accueil, logo, input pour le pseudo, et premier bouton de validation */
+#gameLogo {
+    position:relative;
+    margin-left:auto;
+    margin-right:auto;
+    width:150px;
+    height:150px;
+}
+
+#inputPseudo {
+    margin-top:3vh;
+    margin-bottom:3vh;
+    margin-left:auto;
+    margin-right:auto;
+    border: 3px solid #00ff00;
+    border-radius:50px;
+    width: 18vw;
+    height:6vh;
+    text-align:center;
+    font-weight:bold;
+    background-color:black;
+    color:white;
+}
+
+
+#inputPseudo:focus::placeholder {
+    color:transparent;
+}
+
+#inputValider, #inputValiderDifficulty, #shipPlacement {
+    margin-left:auto;
+    margin-right:auto;
+    border: 3px solid black;
+    background-color:#00ff00;
+    border-radius: 30px;
+    width: 10vw;
+    height:5vh;
+    font-weight:bold;
+}
+
+#inputValider:hover, #inputValiderDifficulty:hover, #shipPlacement:hover {
+    background-color:black;
+    /* color:#00ff00; */
+    color: #00FF00 ;
+    border: 3px solid #00FF00 ;
+}
+
+.colorGreen {
+    background-color:#00ff00 !important;
+    color:black !important;
+    border: 3px solid black !important;
+}
+
+.colorGreen:hover {
+    background-color:black !important;
+    color:#00ff00 !important;
+    border: 3px solid #00FF00 !important;
+}
+
+.borderGreen {
+    border: 3px solid #00FF00 !important;
+}
+
+.colorRed {
+    background-color:#FF0000 !important;
+    color:black !important;
+    border: 3px solid black !important;
+}
+
+.colorRed:hover {
+    background-color:black !important;
+    color:#ff0000 !important;
+    border: 3px solid #FF0000 !important;
+}
+
+.borderRed {
+    border: 3px solid red !important;
+}
+
+.colorPurple {
+    background-color:#BA55D3 !important;
+    color:black !important;
+    border: 3px solid black !important;
+}
+
+.colorPurple:hover {
+    background-color:black !important;
+    color:#BA55D3 !important;
+    border: 3px solid#BA55D3 !important;
+}
+
+.borderPurple {
+    border: 3px solid #BA55D3 !important;
+}
+
+.colorOrange {
+    background-color:#FF8C00 !important;
+    color:black !important;
+    border: 3px solid black !important;
+}
+
+.colorOrange:hover {
+    background-color:black !important;
+    color:#ff8C00 !important;
+    border: 3px solid #FF8C00 !important;
+}
+
+.borderOrange {
+    border: 3px solid #FF8C00 !important;
+}
+
+
+.colorBlue {
+    background-color:#0000CD !important;
+    color:black !important;
+    border: 3px solid black !important;
+}
+
+.colorBlue:hover {
+    background-color:black !important;
+    color:#0000CD!important;
+    border: 3px solid #0000CD !important;
+}
+
+.borderBlue {
+    border: 3px solid #0000CD!important;
+}
+
+.colorPink {
+    background-color:#fd6c9e !important;
+    color:black !important;
+    border: 3px solid black !important;
+}
+
+.colorPink:hover {
+    background-color:black !important;
+    color:#fd6c9e !important;
+    border: 3px solid #fd6c9e !important;
+}
+
+.borderPink {
+    border: 3px solid #fd6c9e !important;
+}
+
+
+#themeColorSelect {
+    display: flex;
+    flex-direction:row;
+    margin-top:3vh;
+    justify-content: space-evenly;
+}
+#themeColorSelect div {
+    width: 4vh;
+    height:4vh;
+    border: 3px solid black;
+}
+
+#themeColorGreen {
+    background-color:#00ff00;
+}
+
+#themeColorRed {
+   background-color:#ff0000;
+}
+
+#themeColorPurple {
+    background-color:#ba55d3;
+ }
+
+ #themeColorOrange {
+    background-color:#ff8c00;
+ }
+
+ #themeColorBlue {
+    background-color:#0000CD; 
+ }
+
+.gridGreen {
+     border: 1px solid #00FF00 !important;
+ }
+
+.gridRed{
+    border: 1px solid #FF0000 !important;
+}
+
+.gridPurple{
+    border: 1px solid #ba55d3 !important;
+}
+
+.gridOrange{
+    border: 1px solid #ff8C00 !important;
+}
+
+.gridBlue{
+    border: 1px solid #0000CD !important;
+}
+
+.gridPink{
+    border: 1px solid #fd6c9e !important;
+}
+
+
+/* Deuxième "page" avec options du jeu, liste déroulantes, choix du mode de jeu, et deuxième 
+bouton de validation */
+#welcome {
+    margin-bottom:5vh;
+    font-size:30px;
+}
+
+#playerMode {
+    margin-top:3vh;
+}
+
+#playerMode1Label {
+    font-size:18px;
+}
+#playerMode2Label {
+    font-size:18px;
+}
+
+#modesDeJeu {
+    display:inline-block;
+}
+#labelPlayerDifficulty {
+    margin-top:5vh;
+}
+
+#playerDifficulty {
+    margin-top:3vh;
+}
+
+#labelPlayerMode {
+    margin-bottom:3vh;
+}
+
+#playerDifficulty {
+    margin-bottom:3vh;
+}
+
+#inputValiderDifficulty {
+    margin-top: 3vh;
+}
+
+#computerDifficultyBox {
+    display: flex;
+    flex-direction: column;
+}
+
+#labelComputerDifficulty {
+    margin-bottom:3vh;
+}
+
+#containerDifficulty {
+    top:20vh;
+}
+
+/* Partie sur le côté pour afficher l'avatar et le pseudo du joueur */
+#userCapitaine {
+    position: fixed;
+    top:7vh;
+    left:3vw;
+    display:flex;
+    flex-direction: column;
+    font-weight:bold;
+    font-size:18px;
+}
+
+#avatarCapitaine {
+    width:7vw;
+    height:15vh;  
+}
+
+
+/* Définition de la troisième page, celle du jeu, et gestion des deux grilles du joueur et
+de l'ordinateur */
+#containerGameGrid {
+    width: 65vh;
+    height: 65vh;
+    top: 20vh;
+}
+
+.grid {
+    width:60vh;
+    height:60vh;
+    display:flex;
+    flex-wrap: wrap;
+    background-color :black;
+    margin-right:-15vh;    
+}
+
+.gridBox {
+    width:6vh;
+    height:6vh;
+    border: 1px solid #00ff00;
+    margin: -1px;
+    background-color:black;
+}
+
+.spotHidden {
+    background-color:black !important;
+}
+
+.spotHit {
+    background-color:red !important;
+}
+
+.spotMiss {
+    background-color:white !important;
+}
+
+#playerGrid {
+    position:fixed;
+    top:20vh;
+    left:20vw;
+}
+
+#computerGrid, #player2Grid {
+    position:fixed;
+    top:20vh;
+    right:20vw;
+    background-color: black;
+}
+
+#player2Grid {
+    background-color:black;
+}
+
+/* Div contenant les vaisseaux du joueur à placer */
+#shipPlaceBox, #shipPlaceBoxEasy, #shipPlaceBoxNormal, #shipPlaceBoxHard  {
+    position:fixed;
+    width:30vh;
+    height:48vh;
+    top:32vh;
+    left:3vw;
+    background-color:purple;
+}
+
+#shipPlacement {
+    position: fixed;
+    bottom: 14vh;
+    left: 4.5vw;
+}
+
+#turnInfo {
+    position:fixed;
+    top:10vh;
+    left:28vh;
+}
+
+#otherInfo {
+    position: fixed;
+    bottom:10vh;
+    right:28vh;
+}
+
+.Corvette {
+    background-color: orange;
+}
+
+.Frégate {
+    background-color: pink;
+}
+
+.Navette {
+    background-color: chartreuse;
+}
+
+.Cuirassé {
+    background-color:gray;
+}
+
+.Cargo {
+    background-color: white;
+}
+
+.Croiseur {
+    background-color: aqua;
+}
+
+.Vaisseau_de_Commandement {
+    background-color: brown;
+}
+
+
+
+.containerCorvette {
+    display:flex;
+}
+
+.containerCorvetteVertical {
+    display:flex;
+    flex-direction: column;
+}
+
+.containerFrégate {
+    display:flex;
+}
+
+.containerFrégateVertical {
+    display:flex;
+    flex-direction: column;
+}
+
+.containerNavette {
+    display:flex;
+}
+
+.containerNavetteVertical {
+    display:flex;
+    flex-direction: column;
+}
+
+.containerCuirassé {
+    display:flex;
+}
+
+.containerCuirasséVertical {
+    display:flex;
+    flex-direction: column;
+}
+
+.containerCroiseur {
+    display:flex;
+}
+
+.containerCroiseurVertical {
+    display:flex;
+    flex-direction: column;
+}
+
+.containerCargo {
+    display:flex;
+}
+
+.containerCargoVertical {
+    display:flex;
+    flex-direction: column;
+}
+
+.containerVaisseau_de_Commandement {
+    display:flex;
+}
+
+.containerVaisseau_de_CommandementVertical {
+    display:flex;
+    flex-direction: column;
+}
+
+
+#ponyJoke {
+    position:fixed;
+    top:30vh;
+    left:40vw;
+}
+
+/* Classe hidden utilisée sur toutes les pages pour afficher/cacher les éléments */
+.hidden {
+    display:none !important;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
