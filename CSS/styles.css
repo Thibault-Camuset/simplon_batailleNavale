@@ -10,7 +10,7 @@ body {
 }
 
 /* Affichage principal, qui sera caché et visible au fur et à mesure des étapes */
-#containerAccueil, #containerDifficulty, #containerGameGrid {
+#containerAccueil, #containerDifficulty, #containerGameGrid, #score-tab {
     position: relative;
     display: flex;
     flex-direction: column;
@@ -492,7 +492,7 @@ de l'ordinateur */
 
 .containerCorvetteVertical {
     display:flex;
-    flex-direction: column;
+    flex-direction: column !important;
 }
 
 .containerFrégate {
@@ -501,7 +501,7 @@ de l'ordinateur */
 
 .containerFrégateVertical {
     display:flex;
-    flex-direction: column;
+    flex-direction: column !important;
 }
 
 .containerNavette {
@@ -510,7 +510,7 @@ de l'ordinateur */
 
 .containerNavetteVertical {
     display:flex;
-    flex-direction: column;
+    flex-direction: column !important;
 }
 
 .containerCuirassé {
@@ -519,7 +519,7 @@ de l'ordinateur */
 
 .containerCuirasséVertical {
     display:flex;
-    flex-direction: column;
+    flex-direction: column !important;
 }
 
 .containerCroiseur {
@@ -528,7 +528,7 @@ de l'ordinateur */
 
 .containerCroiseurVertical {
     display:flex;
-    flex-direction: column;
+    flex-direction: column !important;
 }
 
 .containerCargo {
@@ -537,7 +537,7 @@ de l'ordinateur */
 
 .containerCargoVertical {
     display:flex;
-    flex-direction: column;
+    flex-direction: column !important;
 }
 
 .containerVaisseau_de_Commandement {
@@ -546,7 +546,7 @@ de l'ordinateur */
 
 .containerVaisseau_de_CommandementVertical {
     display:flex;
-    flex-direction: column;
+    flex-direction: column !important;
 }
 
 
@@ -554,6 +554,12 @@ de l'ordinateur */
     position:fixed;
     top:30vh;
     left:40vw;
+}
+
+#score-tab {
+    height:70vh;
+    width:40vw;
+    background-color:black;
 }
 
 /* Classe hidden utilisée sur toutes les pages pour afficher/cacher les éléments */

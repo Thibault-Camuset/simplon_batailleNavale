@@ -17,14 +17,14 @@ let shipPlaceBoxEasy = document.getElementById('shipPlaceBoxEasy');
 let shipPlaceBoxNormal = document.getElementById('shipPlaceBoxNormal');
 let shipPlaceBoxHard = document.getElementById('shipPlaceBoxHard');
 let shipPlacement = document.getElementById('shipPlacement');
-let containerShip = document.querySelectorAll('.containerShip');
-let containerCorvette = document.querySelectorAll('.containerCorvette');
-let containerFrégate = document.querySelectorAll('.containerFrégate');
-let containerCargo = document.querySelectorAll('.containerCargo');
-let containerCuirassé = document.querySelectorAll('.containerCuirassé');
-let containerNavette = document.querySelectorAll('.containerNavette');
-let containerCroiseur = document.querySelectorAll('.containerCroiseur');
-let containerCommandement = document.querySelectorAll('.containerVaisseau_de_Commandement');
+let containerShip;
+let containerCorvette;
+let containerFrégate;
+let containerCargo;
+let containerCuirassé;
+let containerNavette;
+let containerCroiseur;
+let containerCommandement;
 let inputValiderDifficulty = document.getElementById('inputValiderDifficulty');
 let jupiter = document.getElementById('imgJupiters');
 let mars = document.getElementById('imgMars');
@@ -40,6 +40,7 @@ let themeColorPink = document.getElementById('imgNeptune');
 let turnInfo = document.getElementById('turnInfo');
 let userInfo = document.getElementById('otherInfo');
 let playInput = document.getElementById('playInput');
+let scoreTab = document.getElementById('score-tab');
 
 
 // Tableau qui contiendront l'état des grilles de chaque "joueur"
@@ -48,9 +49,14 @@ let computerSpots = [];
 let player2Spots = [];
 let playerShipsList = [];
 let spotTakken = [];
+let playerShipIndexes = [];
+let scoreList = [];
+let itemScoresList = [];
 
 // Variable pour définir la largeur d'une grille de jeu, pour faciliter la manipulation
 let gridWidth = 10;
+const CLEAR_LOCAL_STORAGE = false;
+let scoreCounter = 0;
 
 // Par défaut, aucun des deux modes de jeu ne sera sélectionné.
 playerMode1.checked = false;
@@ -61,6 +67,11 @@ let posHorizontal = true;
 let gameOverStatus = false;
 let currentTurn = "player";
 let canPlay = true;
+let playerScore = 0;
+
+
+
+
 
 // Ecouteur du bouton de la page d'accueil, pour afficher les options, et récupération du pseudo
 // pour plus tard, affichage d'une zone avec le pseudo/avatar du joueur 
@@ -94,7 +105,8 @@ inputValiderDifficulty.addEventListener('click', ()=> {
         shipPlacement.classList.remove('hidden');
         generateGrid (playerGrid, playerSpots, 0); 
         generateGrid (computerGrid, computerSpots, 200);
-        shipBoxGrid();
+        // shipBoxGrid();
+        shipPlaceBox.classList.remove('hidden');
 
         // Crée les vaisseaux du joueur. La difficulté peut être implantée ici.
         //spawnPlayerShips ();
@@ -115,8 +127,10 @@ inputValiderDifficulty.addEventListener('click', ()=> {
         shipPlacement.classList.remove('hidden');
         generateGrid (playerGrid, playerSpots, 0); 
         generateGrid (player2Grid, player2Spots, 200);  
-        shipBoxGrid(); 
+        // shipBoxGrid(); 
+        shipPlaceBox.classList.remove('hidden');
     }
+    displayPlayerShips ()
 });
 
 // Fonction qui va générer les grilles de jeu et implanter 10 lignes de 10 cases, et attribuer
@@ -144,15 +158,92 @@ function generateGrid (grid, array, index) {
     }
 }
 
-// Fonction pour afficher la boite qui contient les vaisseaux du joueur à placer
-function shipBoxGrid () {
-    
+let playerShips = [
+
+    {
+        name: 'Corvette',
+        size: 2
+    },
+    {
+        name: 'Frégate',
+        size: 3
+    },
+    {
+        name: 'Navette',
+        size: 3
+    },
+    {
+        name: 'Cuirassé',
+        size: 3
+    },
+    {
+        name: 'Croiseur',
+        size: 4
+    },
+    {
+        name: 'Cargo',
+        size: 4
+    },
+    {
+        name: 'Vaisseau_de_Commandement',
+        size: 5
+    },
+];
+
+
+function displayPlayerShips () {
     if (playerDifficulty.value == "Facile") {
-        shipPlaceBoxEasy.classList.remove('hidden'); 
-    }   else if (playerDifficulty.value == "Normal") {
-        shipPlaceBoxNormal.classList.remove('hidden'); 
+        playerShipIndexes = [1,2,3,4,5,6];
+        drawPlayerShips (playerShipIndexes);
+    } else if (playerDifficulty.value == "Normal") {
+        playerShipIndexes = [0,1,2,4,6];
+        drawPlayerShips (playerShipIndexes);
     } else if (playerDifficulty.value == "Difficile") {
-        shipPlaceBoxHard.classList.remove('hidden'); 
+        playerShipIndexes = [1,2,3,6];
+        drawPlayerShips (playerShipIndexes);
+    }
+
+    containerShip = document.querySelectorAll('.containerShip');
+    containerCorvette = document.querySelectorAll('.containerCorvette');
+    containerFrégate = document.querySelectorAll('.containerFrégate');
+    containerCargo = document.querySelectorAll('.containerCargo');
+    containerCuirassé = document.querySelectorAll('.containerCuirassé');
+    containerNavette = document.querySelectorAll('.containerNavette');
+    containerCroiseur = document.querySelectorAll('.containerCroiseur');
+    containerCommandement = document.querySelectorAll('.containerVaisseau_de_Commandement');
+
+    // Ecouteur sur la liste des vaisseaux du joueur à placer.
+    containerShip.forEach(ship => ship.addEventListener('dragstart', dragStart));
+
+    containerShip.forEach(ship => ship.addEventListener('mousedown', (e) => {
+        // Index (emplacement) du vaisseau cliqué et drag'
+        actualShipAndIndex = e.target.id;
+    
+        // Ecouteurs du Drag and drop qui nécessitent d'écouter l'array contenant les cases du joueur.
+        playerSpots.forEach(spot => spot.addEventListener('dragstart', dragStart));
+        playerSpots.forEach(spot => spot.addEventListener('dragover', dragOver));
+        playerSpots.forEach(spot => spot.addEventListener('dragenter', dragEnter));
+        playerSpots.forEach(spot => spot.addEventListener('drop', dragDrop));
+    
+    }));
+}
+
+
+function drawPlayerShips (list) {
+    for (i=0;i<list.length;i++) {
+        let newShipContainer = document.createElement('div');
+        newShipContainer.classList.add( 'container'+playerShips[list[i]].name, 'containerShip');
+        newShipContainer.setAttribute('draggable', true);
+        
+        shipPlaceBox.appendChild(newShipContainer);
+
+        for (y=0;y<playerShips[list[i]].size;y++) {
+            let newShipPart = document.createElement('div');
+            newShipPart.classList.add(playerShips[list[i]].name, 'gridBox');
+            newShipPart.id = playerShips[list[i]].name+'-'+y;
+
+            newShipContainer.appendChild(newShipPart);
+        }
     }
 }
 
@@ -257,25 +348,14 @@ shipPlacement.addEventListener('click', ()=> {
     rotation();
 })
 
-// Ecouteur sur la liste des vaisseaux du joueur à placer.
-containerShip.forEach(ship => ship.addEventListener('dragstart', dragStart));
+
 
 
 let actualShipAndIndex;
 let dragShip;
 let dragShipLength;
 
-containerShip.forEach(ship => ship.addEventListener('mousedown', (e) => {
-    // Index (emplacement) du vaisseau cliqué et drag'
-    actualShipAndIndex = e.target.id;
 
-    // Ecouteurs du Drag and drop qui nécessitent d'écouter l'array contenant les cases du joueur.
-    playerSpots.forEach(spot => spot.addEventListener('dragstart', dragStart));
-    playerSpots.forEach(spot => spot.addEventListener('dragover', dragOver));
-    playerSpots.forEach(spot => spot.addEventListener('dragenter', dragEnter));
-    playerSpots.forEach(spot => spot.addEventListener('drop', dragDrop));
-
-}));
 
 function dragStart () {
     // Sélection de l'élément contenant les "morceaux" du vaisseau que l'on veux bouger.
@@ -366,22 +446,27 @@ function dragDrop () {
         }
     }
 
-    // Effacement du vaisseau de la boite des "a placer"
-    if (playerDifficulty.value == "Facile") {
-        shipPlaceBoxEasy.removeChild(dragShip); 
-    } else if (playerDifficulty.value == "Normal") {
-        shipPlaceBoxNormal.removeChild(dragShip);
-    } else if (playerDifficulty.value == "Difficile") {
-        shipPlaceBoxHard.removeChild(dragShip);
-    }  
+    // // Effacement du vaisseau de la boite des "a placer"
+    // if (playerDifficulty.value == "Facile") {
+    //     shipPlaceBoxEasy.removeChild(dragShip); 
+    // } else if (playerDifficulty.value == "Normal") {
+    //     shipPlaceBoxNormal.removeChild(dragShip);
+    // } else if (playerDifficulty.value == "Difficile") {
+        shipPlaceBox.removeChild(dragShip);
+    // }  
 
     
     // cache la boite de placement une fois tous les vaisseaux placés, et fait apparaitre le bouton pour jouer.
-     if (shipPlaceBoxNormal.childElementCount == 0) {
-        shipPlaceBoxNormal.classList.add('hidden'); 
-        shipPlacement.classList.add('hidden');
-        playInput.classList.remove('hidden'); 
-    }
+    if (shipPlaceBox.childElementCount == 0) {
+         shipPlaceBox.classList.add('hidden'); 
+            shipPlacement.classList.add('hidden');
+             playInput.classList.remove('hidden'); 
+         }
+    //  if (shipPlaceBoxNormal.childElementCount == 0) {
+    //     shipPlaceBoxNormal.classList.add('hidden'); 
+    //     shipPlacement.classList.add('hidden');
+    //     playInput.classList.remove('hidden'); 
+    // }
 }
 
 function game() {
@@ -392,7 +477,7 @@ function game() {
     
     if (currentTurn == 'player') {
         turnInfo.innerHTML = "A vous de jouer Capitaine "+inputPseudo.value+"!";
-        console.log(computerSpots);
+        
         
         
         
@@ -411,9 +496,11 @@ let croiseurCounter = 0;
 let commandementCounter = 0;
 
 function showSpot (spot) {
-    if (gameOverStatus || !canPlay) {
+    // vérifie si gameover n'est pas actif, si le joueur peux jouer, et si la case cliquée ne l'a pas déjà été précédement.
+    if (gameOverStatus || !canPlay || spot.classList.contains('spotMiss') || spot.classList.contains('spotHit')) {
         return;
     }
+    // Si il y a touche, alors, le jeu détermine quel vaisseau a été touché, et incrémente le compteur qui lui est lié.
     if (!spot.classList.contains('spotHit')) {
         if (spot.classList.contains('Corvette')) {
          corvetteCounter++;
@@ -429,14 +516,19 @@ function showSpot (spot) {
     }
     if (spot.classList.contains('spotTaken')) {
         spot.classList.add('spotHit');
+        
     } else {
         spot.classList.add('spotMiss');
     }
+
+    playerScore++;
+    console.log(playerScore);
     currentTurn = 'computer';
     winConditions ();
     
     game();
 }
+
 
 
 let corvetteComputerCounter = 0;
@@ -508,9 +600,15 @@ function winConditions () {
      } if (navetteComputerCounter == 3) {
          userInfo.innerHTML = "Votre Navette a été détruite!"; 
          navetteComputerCounter = 10;
-     } if (croiseurComputerCounter == 4) {
+     } if (cuirasséComputerCounter == 3) {
+        userInfo.innerHTML = "Votre Cuirassé a été détruite!"; 
+        cuirasséComputerCounter = 10;
+    } if (croiseurComputerCounter == 4) {
          userInfo.innerHTML = "Votre Croiseur a été détruit!";
          croiseurComputerCounter = 10; 
+    } if (cargoComputerCounter == 4) {
+        userInfo.innerHTML = "Votre Croiseur a été détruit!";
+        cargoComputerCounter = 10; 
      } if (commandementComputerCounter == 5) {
          userInfo.innerHTML = "Votre Vaisseau de Commandement a été détruit!";
          commandementComputerCounter = 10; 
@@ -519,15 +617,98 @@ function winConditions () {
     } if (corvetteCounter+frégateCounter+navetteCounter+croiseurCounter+commandementCounter == 50) {
         userInfo.innerHTML = "Vous avez gagné!";
         gameOver();
-    } if (corvetteComputerCounter+frégateComputerCounter+navetteComputerCounter+croiseurComputerCounter+commandementComputerCounter == 50) {
-        userInfo.innerHTML = "Votre adversaire a gagné!";
-        gameOver();
-    }    
+    } 
+    
+    if (playerDifficulty.value == "Facile") {
+        if (frégateComputerCounter+navetteComputerCounter+cuirasséComputerCounter+croiseurComputerCounter+cargoComputerCounter+commandementComputerCounter == 60) {
+            userInfo.innerHTML = "Votre adversaire a gagné!";
+            gameOver();
+        }
+    } else if (playerDifficulty.value == "Normal") {
+        if (corvetteComputerCounter+frégateComputerCounter+navetteComputerCounter+croiseurComputerCounter+commandementComputerCounter == 50) {
+            userInfo.innerHTML = "Votre adversaire a gagné!";
+            gameOver();
+        }
+    } else if (playerDifficulty.value == "Difficile") {
+        if (frégateComputerCounter+navetteComputerCounter+cuirasséComputerCounter+commandementComputerCounter == 40) {
+            userInfo.innerHTML = "Votre adversaire a gagné!";
+            gameOver();
+        }
+        
+    }
+
+    // if (corvetteComputerCounter+frégateComputerCounter+navetteComputerCounter+croiseurComputerCounter+commandementComputerCounter == 50) {
+    //     userInfo.innerHTML = "Votre adversaire a gagné!";
+    //     gameOver();
+    // }    
 }
 
 function gameOver () {
     gameOverStatus = true;
+    containerGameGrid.classList.add('hidden');
+    scoreTab.classList.remove('hidden');
+    
+
+    // let newScore = document.createElement('div');
+
+    saveItemsInStorage();
+    loadItemsFromStorage();
+
+    // newScore.innerHTML = "Vous avez gagné en "+playerScore+" tours!";
+
+    // scoreTab.appendChild(newScore);
 }
+
+
+
+function saveItemsInStorage() {
+
+    let scoreItem = {
+        id: scoreCounter,
+        score: playerScore
+    };
+
+
+    scoreList = JSON.parse(localStorage.getItem("score-items"));
+
+    scoreList.push(scoreItem);
+
+    localStorage.setItem("score-items", JSON.stringify(scoreList));
+
+    scoreCounter++; 
+    localStorage.setItem('counter', scoreCounter);
+}
+
+
+function loadItemsFromStorage() {
+    const storageScores = localStorage.getItem("score-items");
+    const itemsScores = JSON.parse(storageScores);
+
+    console.log(storageScores);
+    console.log(itemsScores);
+
+    if (itemsScores != null) {
+        itemScoresList = itemsScores;
+        console.log("itemScoresList :"+itemScoresList);
+
+        for (x=0; x<itemsScores.length; x++) {
+            let newItem = document.createElement('div');
+            newItem.classList.add('score');
+            newItem.id = itemsScores[x].id;
+            newItem.innerText = itemsScores[x].score;
+
+            scoreTab.appendChild(newItem);
+        }
+    }
+
+    scoreCounter = +localStorage.getItem('counter');
+
+    if(CLEAR_LOCAL_STORAGE) {
+        localStorage.clear();
+    }
+}
+
+
 
 playInput.addEventListener('click', ()=>{
     game();
@@ -536,6 +717,9 @@ playInput.addEventListener('click', ()=>{
         showSpot(spot);
     }))    
 })
+
+
+
 
 // Ecouteurs sur les boutons de thèmes à couleur
 themeColorGreen.addEventListener('click', ()=> {
