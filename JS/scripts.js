@@ -163,21 +163,6 @@ function generateGrid(grid, array, index) {
     }
 }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 // Array contenant les objets vaisseaux pour les vaisseaux du joueur
 let playerShips = [
 
