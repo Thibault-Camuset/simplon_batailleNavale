@@ -43,6 +43,18 @@ let playInput = document.getElementById('playInput');
 let scoreTab = document.getElementById('score-tab');
 
 
+
+
+
+
+
+
+
+
+
+
+
+
 // Tableau qui contiendront l'état des grilles de chaque "joueur"
 let playerSpots = [];
 let computerSpots = [];
