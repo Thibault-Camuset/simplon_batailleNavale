@@ -19,9 +19,9 @@ let shipPlaceBoxHard = document.getElementById('shipPlaceBoxHard');
 let shipPlacement = document.getElementById('shipPlacement');
 let containerShip;
 let containerCorvette;
-let containerFrégate;
+let containerFregate;
 let containerCargo;
-let containerCuirassé;
+let containerCuirasse;
 let containerNavette;
 let containerCroiseur;
 let containerCommandement;
@@ -171,7 +171,7 @@ let playerShips = [
         size: 2
     },
     {
-        name: 'Frégate',
+        name: 'Fregate',
         size: 3
     },
     {
@@ -179,7 +179,7 @@ let playerShips = [
         size: 3
     },
     {
-        name: 'Cuirassé',
+        name: 'Cuirasse',
         size: 3
     },
     {
@@ -212,9 +212,9 @@ function displayPlayerShips() {
 
     containerShip = document.querySelectorAll('.containerShip');
     containerCorvette = document.querySelectorAll('.containerCorvette');
-    containerFrégate = document.querySelectorAll('.containerFrégate');
+    containerFregate = document.querySelectorAll('.containerFregate');
     containerCargo = document.querySelectorAll('.containerCargo');
-    containerCuirassé = document.querySelectorAll('.containerCuirassé');
+    containerCuirasse = document.querySelectorAll('.containerCuirasse');
     containerNavette = document.querySelectorAll('.containerNavette');
     containerCroiseur = document.querySelectorAll('.containerCroiseur');
     containerCommandement = document.querySelectorAll('.containerVaisseau_de_Commandement');
@@ -264,7 +264,7 @@ let shipTypes = [
         ]
     },
     {
-        name: 'Frégate',
+        name: 'Fregate',
         directions: [
             [0, 1, 2],
             [0, gridWidth, gridWidth * 2]
@@ -330,19 +330,19 @@ function randomComputerShip(ship) {
 function rotation() {
     if (posHorizontal == true) {
         containerCorvette.forEach(ship => ship.classList.toggle('containerCorvetteVertical'));
-        containerFrégate.forEach(ship => ship.classList.toggle('containerFrégateVertical'));
+        containerFregate.forEach(ship => ship.classList.toggle('containerFregateVertical'));
         containerNavette.forEach(ship => ship.classList.toggle('containerNavetteVertical'));
         containerCargo.forEach(ship => ship.classList.toggle('containerCargoVertical'));
-        containerCuirassé.forEach(ship => ship.classList.toggle('containerCuirasséVertical'));
+        containerCuirasse.forEach(ship => ship.classList.toggle('containerCuirasseVertical'));
         containerCroiseur.forEach(ship => ship.classList.toggle('containerCroiseurVertical'));
         containerCommandement.forEach(ship => ship.classList.toggle('containerVaisseau_de_CommandementVertical'));
         posHorizontal = false;
     } else {
         containerCorvette.forEach(ship => ship.classList.toggle('containerCorvetteVertical'));
-        containerFrégate.forEach(ship => ship.classList.toggle('containerFrégateVertical'));
+        containerFregate.forEach(ship => ship.classList.toggle('containerFregateVertical'));
         containerNavette.forEach(ship => ship.classList.toggle('containerNavetteVertical'));
         containerCargo.forEach(ship => ship.classList.toggle('containerCargoVertical'));
-        containerCuirassé.forEach(ship => ship.classList.toggle('containerCuirasséVertical'));
+        containerCuirasse.forEach(ship => ship.classList.toggle('containerCuirasseVertical'));
         containerCroiseur.forEach(ship => ship.classList.toggle('containerCroiseurVertical'));
         containerCommandement.forEach(ship => ship.classList.toggle('containerVaisseau_de_CommandementVertical'));
         posHorizontal = true;
@@ -486,7 +486,7 @@ function game() {
 }
 
 let corvetteCounter = 0;
-let frégateCounter = 0;
+let fregateCounter = 0;
 let navetteCounter = 0;
 let croiseurCounter = 0;
 let commandementCounter = 0;
@@ -502,8 +502,8 @@ function showSpot(spot) {
     if (!spot.classList.contains('spotHit')) {
         if (spot.classList.contains('Corvette')) {
             corvetteCounter++;
-        } if (spot.classList.contains('Frégate')) {
-            frégateCounter++;
+        } if (spot.classList.contains('Fregate')) {
+            fregateCounter++;
         } if (spot.classList.contains('Navette')) {
             navetteCounter++;
         } if (spot.classList.contains('Croiseur')) {
@@ -530,9 +530,9 @@ function showSpot(spot) {
 
 // compteurs pour le score
 let corvetteComputerCounter = 0;
-let frégateComputerCounter = 0;
+let fregateComputerCounter = 0;
 let navetteComputerCounter = 0;
-let cuirasséComputerCounter = 0;
+let cuirasseComputerCounter = 0;
 let cargoComputerCounter = 0;
 let croiseurComputerCounter = 0;
 let commandementComputerCounter = 0;
@@ -555,7 +555,7 @@ function computerTurn() {
                 // attribue la classe hit, et se rappelle du spot pour entrer en mode chasse et chercher le vaisseau autour plus tard
                 playerSpots[computerRandomHit].classList.add('spotHit');
                 currentHuntSpots.push(playerSpots[computerRandomHit]);
-               
+
                 // appelle la fonction qui gère les points.
                 computerPointsCount(computerRandomHit);
 
@@ -577,7 +577,7 @@ function computerTurn() {
     } else {
         // réinitialise la liste des coups possible pour éviter les doublons
         newPossibleComputerHits = [];
-        for (i=0;i<currentHuntSpots.length; i++) {
+        for (i = 0; i < currentHuntSpots.length; i++) {
             // détermine TOUTES les cases possibles autour de TOUTES les cases déjà "chassées"
             newPossibleComputerHits.push(playerSpots[parseInt(currentHuntSpots[i].dataset.id) - 1]);
             newPossibleComputerHits.push(playerSpots[parseInt(currentHuntSpots[i].dataset.id) - 10]);
@@ -586,13 +586,13 @@ function computerTurn() {
         }
 
         // enlève les possible retour undefined (cases a l'extérieur de la grille)
-        newPossibleComputerHits = newPossibleComputerHits.filter(function(clean) {
+        newPossibleComputerHits = newPossibleComputerHits.filter(function (clean) {
             return clean != undefined;
         })
 
         // vérifie pour chaque case à toucher dans le tableau si elle n'a pas déjà été touchée
-        for (i=0;i<newPossibleComputerHits.length; i++) {
-          
+        for (i = 0; i < newPossibleComputerHits.length; i++) {
+
             if (newPossibleComputerHits[i].classList.contains('spotMiss')) {
                 tabsup = newPossibleComputerHits.splice(i, 1);
                 i--;
@@ -643,12 +643,12 @@ function computerTurn() {
 function computerPointsCount(index) {
     if (playerSpots[index].classList.contains('Corvette')) {
         corvetteComputerCounter++;
-    } if (playerSpots[index].classList.contains('Frégate')) {
-        frégateComputerCounter++;
+    } if (playerSpots[index].classList.contains('Fregate')) {
+        fregateComputerCounter++;
     } if (playerSpots[index].classList.contains('Navette')) {
         navetteComputerCounter++;
-    } if (playerSpots[index].classList.contains('Cuirassé')) {
-        cuirasséComputerCounter++;
+    } if (playerSpots[index].classList.contains('Cuirasse')) {
+        cuirasseComputerCounter++;
     } if (playerSpots[index].classList.contains('Cargo')) {
         cargoComputerCounter++;
     } if (playerSpots[index].classList.contains('Croiseur')) {
@@ -665,9 +665,9 @@ function winConditions() {
     if (corvetteCounter == 2) {
         userInfo.innerHTML = "Vous avez détruit la Corvette de votre adversaire!";
         corvetteCounter = 10;
-    } if (frégateCounter == 3) {
+    } if (fregateCounter == 3) {
         userInfo.innerHTML = "Vous avez détruit la Frégate de votre adversaire!";
-        frégateCounter = 10;
+        fregateCounter = 10;
     } if (navetteCounter == 3) {
         userInfo.innerHTML = "Vous avez détruit la Navette de votre adversaire!";
         navetteCounter = 10;
@@ -679,47 +679,47 @@ function winConditions() {
         commandementCounter = 10;
 
 
-// Partie qui compte le score de l'ordinateur et ce en fonction de la difficulté
+        // Partie qui compte le score de l'ordinateur et ce en fonction de la difficulté
     } if (corvetteComputerCounter == 2) {
         userInfo.innerHTML = "Votre Corvette a été détruite!";
         corvetteComputerCounter = 10;
-    } if (frégateComputerCounter == 3) {
+    } if (fregateComputerCounter == 3) {
         userInfo.innerHTML = "Votre Frégate a été détruite!";
-        frégateComputerCounter = 10;
+        fregateComputerCounter = 10;
     } if (navetteComputerCounter == 3) {
         userInfo.innerHTML = "Votre Navette a été détruite!";
         navetteComputerCounter = 10;
-    } if (cuirasséComputerCounter == 3) {
+    } if (cuirasseComputerCounter == 3) {
         userInfo.innerHTML = "Votre Cuirassé a été détruite!";
-        cuirasséComputerCounter = 10;
+        cuirasseComputerCounter = 10;
     } if (croiseurComputerCounter == 4) {
         userInfo.innerHTML = "Votre Croiseur a été détruit!";
         croiseurComputerCounter = 10;
     } if (cargoComputerCounter == 4) {
-        userInfo.innerHTML = "Votre Croiseur a été détruit!";
+        userInfo.innerHTML = "Votre Cargo a été détruit!";
         cargoComputerCounter = 10;
     } if (commandementComputerCounter == 5) {
         userInfo.innerHTML = "Votre Vaisseau de Commandement a été détruit!";
         commandementComputerCounter = 10;
 
 
-    } if (corvetteCounter + frégateCounter + navetteCounter + croiseurCounter + commandementCounter == 50) {
+    } if (corvetteCounter + fregateCounter + navetteCounter + croiseurCounter + commandementCounter == 50) {
         userInfo.innerHTML = "Vous avez gagné!";
         gameOver();
     }
 
     if (playerDifficulty.value == "Facile") {
-        if (frégateComputerCounter + navetteComputerCounter + cuirasséComputerCounter + croiseurComputerCounter + cargoComputerCounter + commandementComputerCounter == 60) {
+        if (fregateComputerCounter + navetteComputerCounter + cuirasseComputerCounter + croiseurComputerCounter + cargoComputerCounter + commandementComputerCounter == 60) {
             userInfo.innerHTML = "Votre adversaire a gagné!";
             gameOver();
         }
     } else if (playerDifficulty.value == "Normal") {
-        if (corvetteComputerCounter + frégateComputerCounter + navetteComputerCounter + croiseurComputerCounter + commandementComputerCounter == 50) {
+        if (corvetteComputerCounter + fregateComputerCounter + navetteComputerCounter + croiseurComputerCounter + commandementComputerCounter == 50) {
             userInfo.innerHTML = "Votre adversaire a gagné!";
             gameOver();
         }
     } else if (playerDifficulty.value == "Difficile") {
-        if (frégateComputerCounter + navetteComputerCounter + cuirasséComputerCounter + commandementComputerCounter == 40) {
+        if (fregateComputerCounter + navetteComputerCounter + cuirasseComputerCounter + commandementComputerCounter == 40) {
             userInfo.innerHTML = "Votre adversaire a gagné!";
             gameOver();
         }
@@ -740,15 +740,17 @@ function gameOver() {
     loadItemsFromStorage();
 }
 
-// Fonction qui sauvegarde le score du joueur dans le localstorage
+// Fonction qui sauvegarde le score du joueur dans le localstorage de Sandrine
 function saveItemsInStorage() {
+
+    let newDate = new Date();
+    let newDateGood = newDate.toLocaleDateString();
 
     let scoreItem = {
         id: scoreCounter,
-        score: playerScore
+        score: playerScore,
+        text: "Vous avez gagné en " + playerScore + " coups le " + newDateGood
     };
-
-    scoreList = JSON.parse(localStorage.getItem("score-items"));
 
     scoreList.push(scoreItem);
 
@@ -773,13 +775,14 @@ function loadItemsFromStorage() {
             let newItem = document.createElement('div');
             newItem.classList.add('score');
             newItem.id = itemsScores[x].id;
-            newItem.innerText = itemsScores[x].score;
+            newItem.innerText = itemsScores[x].text;
 
             scoreTab.appendChild(newItem);
         }
+        scoreCounter = +localStorage.getItem('counter');
+    } else {
+        return false;
     }
-
-    scoreCounter = +localStorage.getItem('counter');
 
     if (CLEAR_LOCAL_STORAGE) {
         localStorage.clear();

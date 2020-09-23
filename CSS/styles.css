@@ -460,7 +460,7 @@ de l'ordinateur */
     background-color: orange;
 }
 
-.Frégate {
+.Fregate {
     background-color: pink;
 }
 
@@ -468,7 +468,7 @@ de l'ordinateur */
     background-color: chartreuse;
 }
 
-.Cuirassé {
+.Cuirasse {
     background-color:gray;
 }
 
@@ -495,11 +495,11 @@ de l'ordinateur */
     flex-direction: column !important;
 }
 
-.containerFrégate {
+.containerFregate {
     display:flex;
 }
 
-.containerFrégateVertical {
+.containerFregateVertical {
     display:flex;
     flex-direction: column !important;
 }
@@ -513,11 +513,11 @@ de l'ordinateur */
     flex-direction: column !important;
 }
 
-.containerCuirassé {
+.containerCuirasse {
     display:flex;
 }
 
-.containerCuirasséVertical {
+.containerCuirasseVertical {
     display:flex;
     flex-direction: column !important;
 }
