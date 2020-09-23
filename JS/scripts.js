@@ -163,6 +163,7 @@ function generateGrid(grid, array, index) {
     }
 }
 
+// Array contenant les objets vaisseaux pour les vaisseaux du joueur
 let playerShips = [
 
     {
@@ -195,7 +196,7 @@ let playerShips = [
     },
 ];
 
-
+// Fonction qui attribue les vaisseau au joueur en fonction de la difficulté, et appelle la fonction qui les dessine dans la boite
 function displayPlayerShips() {
     if (playerDifficulty.value == "Facile") {
         playerShipIndexes = [1, 2, 3, 4, 5, 6];
@@ -207,6 +208,7 @@ function displayPlayerShips() {
         playerShipIndexes = [1, 2, 3, 6];
         drawPlayerShips(playerShipIndexes);
     }
+
 
     containerShip = document.querySelectorAll('.containerShip');
     containerCorvette = document.querySelectorAll('.containerCorvette');
@@ -233,7 +235,7 @@ function displayPlayerShips() {
     }));
 }
 
-
+// Fonction qui dessine les vaisseaux du joueur dans la boite de placement
 function drawPlayerShips(list) {
     for (i = 0; i < list.length; i++) {
         let newShipContainer = document.createElement('div');
@@ -355,7 +357,6 @@ shipPlacement.addEventListener('click', () => {
 
 
 
-
 let actualShipAndIndex;
 let dragShip;
 let dragShipLength;
@@ -451,14 +452,8 @@ function dragDrop() {
         }
     }
 
-    // // Effacement du vaisseau de la boite des "a placer"
-    // if (playerDifficulty.value == "Facile") {
-    //     shipPlaceBoxEasy.removeChild(dragShip); 
-    // } else if (playerDifficulty.value == "Normal") {
-    //     shipPlaceBoxNormal.removeChild(dragShip);
-    // } else if (playerDifficulty.value == "Difficile") {
     shipPlaceBox.removeChild(dragShip);
-    // }  
+
 
 
     // cache la boite de placement une fois tous les vaisseaux placés, et fait apparaitre le bouton pour jouer.
@@ -467,13 +462,9 @@ function dragDrop() {
         shipPlacement.classList.add('hidden');
         playInput.classList.remove('hidden');
     }
-    //  if (shipPlaceBoxNormal.childElementCount == 0) {
-    //     shipPlaceBoxNormal.classList.add('hidden'); 
-    //     shipPlacement.classList.add('hidden');
-    //     playInput.classList.remove('hidden'); 
-    // }
 }
 
+// fonction qui gère les tours de jeu
 function game() {
 
     if (gameOverStatus || !canPlay) {
@@ -500,6 +491,8 @@ let navetteCounter = 0;
 let croiseurCounter = 0;
 let commandementCounter = 0;
 
+
+// fonction qui permet de reveler la case que le joueur choisi de toucher.
 function showSpot(spot) {
     // vérifie si gameover n'est pas actif, si le joueur peux jouer, et si la case cliquée ne l'a pas déjà été précédement.
     if (gameOverStatus || !canPlay || spot.classList.contains('spotMiss') || spot.classList.contains('spotHit')) {
@@ -535,7 +528,7 @@ function showSpot(spot) {
 }
 
 
-
+// compteurs pour le score
 let corvetteComputerCounter = 0;
 let frégateComputerCounter = 0;
 let navetteComputerCounter = 0;
@@ -545,20 +538,25 @@ let croiseurComputerCounter = 0;
 let commandementComputerCounter = 0;
 
 
-
+// Fonction pour le tour de l'ordinateur
 function computerTurn() {
 
+    // SI l'ordinateur n'a pas de "chasse" en cours, ou premier tour de ce dernier
     if (currentHuntSpots.length == 0) {
 
+        // détermine un spot random
         let computerRandomHit = Math.floor(Math.random() * playerSpots.length);
 
+        // vérification que le spot n'est pas déjà touché
         if (!playerSpots[computerRandomHit].classList.contains('spotHit') && !playerSpots[computerRandomHit].classList.contains('spotMiss')) {
 
             if (playerSpots[computerRandomHit].classList.contains('spotTaken')) {
 
+                // attribue la classe hit, et se rappelle du spot pour entrer en mode chasse et chercher le vaisseau autour plus tard
                 playerSpots[computerRandomHit].classList.add('spotHit');
                 currentHuntSpots.push(playerSpots[computerRandomHit]);
                
+                // appelle la fonction qui gère les points.
                 computerPointsCount(computerRandomHit);
 
             } else {
@@ -575,68 +573,49 @@ function computerTurn() {
 
 
 
-
+        // si l'ordinateur a DEJA touché et est en mode chasse
     } else {
+        // réinitialise la liste des coups possible pour éviter les doublons
         newPossibleComputerHits = [];
         for (i=0;i<currentHuntSpots.length; i++) {
+            // détermine TOUTES les cases possibles autour de TOUTES les cases déjà "chassées"
             newPossibleComputerHits.push(playerSpots[parseInt(currentHuntSpots[i].dataset.id) - 1]);
             newPossibleComputerHits.push(playerSpots[parseInt(currentHuntSpots[i].dataset.id) - 10]);
             newPossibleComputerHits.push(playerSpots[parseInt(currentHuntSpots[i].dataset.id) + 1]);
             newPossibleComputerHits.push(playerSpots[parseInt(currentHuntSpots[i].dataset.id) + 10]);
         }
 
-
+        // enlève les possible retour undefined (cases a l'extérieur de la grille)
         newPossibleComputerHits = newPossibleComputerHits.filter(function(clean) {
             return clean != undefined;
         })
 
-
-            // newPossibleComputerHits.forEach(item => {
-            //     if (item == undefined) {
-            //         // newPossibleComputerHits.removeChild(item);   >>> removeChild est pas reconnu comme une fonction.
-            //         // newPossibleComputerHits.splice   >>> Pas possible car pas d'index?
-            //     }
-            // });
-
-        //    for (i=0;i<newPossibleComputerHits.length;i++) {
-        //         if (newPossibleComputerHits[i] == undefined) {
-        //             newPossibleComputerHits.splice(i, 1);
-        //         }
-        //     }
-           
-        
-
+        // vérifie pour chaque case à toucher dans le tableau si elle n'a pas déjà été touchée
         for (i=0;i<newPossibleComputerHits.length; i++) {
           
-    
-
             if (newPossibleComputerHits[i].classList.contains('spotMiss')) {
-
                 tabsup = newPossibleComputerHits.splice(i, 1);
-
                 i--;
             }
             else if (newPossibleComputerHits[i].classList.contains('spotHit')) {
-
                 tabsup = newPossibleComputerHits.splice(i, 1);
-
                 i--;
             }
 
 
         }
 
-        // ajouter condition if si newPossibleComputerHits.length == 0; alors reset currentHuntSpots à 0.
-
-
+        // si les cases à toucher sont vides, alors l'ordinateur n'est plus en chasse, et retourne en mode random.
         if (newPossibleComputerHits.length == 0) {
             currentHuntSpots = [];
             computerTurn();
         }
 
+        // détermine une case au hasard DANS l'array des cases possibles à toucher déterminées plus haut
         let randomComputerIndex = Math.floor(Math.random() * (newPossibleComputerHits.length));
         let computerNewMove = newPossibleComputerHits[randomComputerIndex].dataset.id;
 
+        // vérification habituelles, comme pour le mode random, etc...
         if (!playerSpots[computerNewMove].classList.contains('spotHit') && !playerSpots[computerNewMove].classList.contains('spotMiss')) {
 
             if (playerSpots[computerNewMove].classList.contains('spotTaken')) {
@@ -660,11 +639,7 @@ function computerTurn() {
     }
 }
 
-// Retirer l'index de l'array de coup possible SI c'est touché, et continuer la chasse, ou bien si c'est à l'eau et aussi continuer la
-// chasse. Mais aussi, savoir où on en est du vaisseau en cours, et si il faut continuer à taper, ou retourner au random.
-// Cas particulier si deux vaisseaux sont collés l'un a l'autre, analyse possible de la classe pour être sur, et garder en mémoire 
-// l'autre touche?
-
+// Fonction qui compte les points pour établir les conditions de victoire ensuite
 function computerPointsCount(index) {
     if (playerSpots[index].classList.contains('Corvette')) {
         corvetteComputerCounter++;
@@ -683,7 +658,10 @@ function computerPointsCount(index) {
     }
 }
 
+// Fonction qui vérifie les conditions de victoire, et appelle si nécessaire le game over
 function winConditions() {
+
+    // Partie qui compte le score du joueur
     if (corvetteCounter == 2) {
         userInfo.innerHTML = "Vous avez détruit la Corvette de votre adversaire!";
         corvetteCounter = 10;
@@ -701,7 +679,7 @@ function winConditions() {
         commandementCounter = 10;
 
 
-
+// Partie qui compte le score de l'ordinateur et ce en fonction de la difficulté
     } if (corvetteComputerCounter == 2) {
         userInfo.innerHTML = "Votre Corvette a été détruite!";
         corvetteComputerCounter = 10;
@@ -749,6 +727,7 @@ function winConditions() {
     }
 }
 
+// Fonction qui se lance quand la partie est gagné par le joueur ou l'ordinateur, et appelle la page de scores
 function gameOver() {
     gameOverStatus = true;
     containerGameGrid.classList.add('hidden');
@@ -759,12 +738,9 @@ function gameOver() {
     allScores.forEach(score => scoreTab.removeChild(score));
     saveItemsInStorage();
     loadItemsFromStorage();
-
-    // newScore.innerHTML = "Vous avez gagné en "+playerScore+" tours!";
-
-    // scoreTab.appendChild(newScore);
 }
 
+// Fonction qui sauvegarde le score du joueur dans le localstorage
 function saveItemsInStorage() {
 
     let scoreItem = {
@@ -782,6 +758,7 @@ function saveItemsInStorage() {
     localStorage.setItem('counter', scoreCounter);
 }
 
+// Fonction qui charge les scores du joueur et les met à jour
 function loadItemsFromStorage() {
     const storageScores = localStorage.getItem("score-items");
     const itemsScores = JSON.parse(storageScores);
@@ -809,6 +786,7 @@ function loadItemsFromStorage() {
     }
 }
 
+// Ecouteur de base qui lance le jeu quand on clique sur "jouer", et ajoute les écouteurs sur les spots de l'ordinateur a ce moment
 playInput.addEventListener('click', () => {
     game();
 
@@ -848,6 +826,7 @@ themeColorPink.addEventListener('click', () => {
     document.body.style.color = "#fd6c9e";
 })
 
+// Fonction qui gère les couleurs des thèmes toutes en même temps.
 function changecolor(color) {
     inputValider.classList.remove('colorPink', 'colorRed', 'colorPurple', 'colorOrange', 'colorBlue', 'colorGreen');
     inputValider.classList.add('color' + color);
