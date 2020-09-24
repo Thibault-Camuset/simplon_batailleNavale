@@ -320,17 +320,19 @@ bouton de validation */
 }
 
 #playerMode1Label {
-    font-size:18px;
+    font-size:15px;
 }
-#playerMode2Label {
-    font-size:18px;
-}
+
+/*#playerMode2Label {
+    font-size:10px;
+}*/
 
 #modesDeJeu {
     display:inline-block;
 }
 #labelPlayerDifficulty {
     margin-top:5vh;
+    font-size: 17px;
 }
 
 #playerDifficulty {
@@ -339,6 +341,7 @@ bouton de validation */
 
 #labelPlayerMode {
     margin-bottom:3vh;
+    font-size: 17px;
 }
 
 #playerDifficulty {
@@ -489,8 +492,6 @@ de l'ordinateur */
     background-color: brown;
 }
 
-
-
 .containerCorvette {
     display:flex;
 }
@@ -554,7 +555,6 @@ de l'ordinateur */
     flex-direction: column !important;
 }
 
-
 #ponyJoke {
     position:fixed;
     top:30vh;
@@ -571,16 +571,3 @@ de l'ordinateur */
 .hidden {
     display:none !important;
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
