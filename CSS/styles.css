@@ -105,8 +105,6 @@ h1 {
     right:35vw; 
 }
 
-
-
 /* Page d'accueil, logo, input pour le pseudo, et premier bouton de validation */
 #gameLogo {
     position:relative;
@@ -263,6 +261,7 @@ h1 {
     margin-top:3vh;
     justify-content: space-evenly;
 }
+
 #themeColorSelect div {
     width: 4vh;
     height:4vh;
@@ -312,7 +311,6 @@ h1 {
 .gridPink{
     border: 1px solid #fd6c9e !important;
 }
-
 
 /* Deuxième "page" avec options du jeu, liste déroulantes, choix du mode de jeu, et deuxième 
 bouton de validation */
