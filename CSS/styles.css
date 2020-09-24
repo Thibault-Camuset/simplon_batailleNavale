@@ -9,6 +9,13 @@ body {
     color:#00ff00;
 }
 
+h1 {
+    font-size: 38px;
+    color: white;
+    text-shadow: 3px 3px 4px black;
+    text-align: center;
+}
+
 /* Affichage principal, qui sera caché et visible au fur et à mesure des étapes */
 #containerAccueil, #containerDifficulty, #containerGameGrid, #score-tab {
     position: relative;
