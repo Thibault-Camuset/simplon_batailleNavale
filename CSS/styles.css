@@ -440,7 +440,7 @@ de l'ordinateur */
     height:48vh;
     top:32vh;
     left:3vw;
-    background-color:purple;
+    background-color: transparent;
 }
 
 #shipPlacement {
