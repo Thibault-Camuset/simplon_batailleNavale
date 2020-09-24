@@ -84,8 +84,8 @@ inputValider.addEventListener('click', () => {
     containerDifficulty.classList.remove('hidden');
     let pseudo = inputPseudo.value;
     document.getElementById('welcome').innerHTML = "Bienvenue Capitaine " + pseudo + " !";
-    document.getElementById('pseudoCapitaine').innerHTML = "Capitaine " + pseudo;
-    document.getElementById('userCapitaine').classList.remove('hidden');
+    //document.getElementById('pseudoCapitaine').innerHTML = "Capitaine " + pseudo;
+    //document.getElementById('userCapitaine').classList.remove('hidden');
 });
 
 // Ecouteurs sur les deux options de jeu, et affichage de la difficulté de l'ordinateur si besoin
