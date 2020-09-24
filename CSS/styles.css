@@ -106,13 +106,13 @@ h1 {
 }
 
 /* Page d'accueil, logo, input pour le pseudo, et premier bouton de validation */
-#gameLogo {
+/*#gameLogo {
     position:relative;
     margin-left:auto;
     margin-right:auto;
     width:150px;
     height:150px;
-}
+}*/
 
 #inputPseudo {
     margin-top:3vh;
@@ -371,7 +371,7 @@ bouton de validation */
 }
 
 /* Partie sur le côté pour afficher l'avatar et le pseudo du joueur */
-#userCapitaine {
+/*#userCapitaine {
     position: fixed;
     top:7vh;
     left:3vw;
@@ -379,12 +379,12 @@ bouton de validation */
     flex-direction: column;
     font-weight:bold;
     font-size:18px;
-}
+}*/
 
-#avatarCapitaine {
+/*#avatarCapitaine {
     width:7vw;
     height:15vh;  
-}
+}*/
 
 /* Définition de la troisième page, celle du jeu, et gestion des deux grilles du joueur et
 de l'ordinateur */
