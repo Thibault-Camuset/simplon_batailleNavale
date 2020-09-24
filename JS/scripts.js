@@ -59,8 +59,8 @@ const CLEAR_LOCAL_STORAGE = false;
 let scoreCounter = 0;
 
 // Par défaut, aucun des deux modes de jeu ne sera sélectionné.
-playerMode1.checked = false;
-playerMode2.checked = false;
+playerMode1.checked = true;
+// playerMode2.checked = false;
 
 // La position initiale des vaisseaux sera horizontale.
 let posHorizontal = true;
@@ -92,9 +92,9 @@ inputValider.addEventListener('click', () => {
 playerMode1.addEventListener('click', () => {
     computerDifficultyBox.classList.remove('hidden');
 });
-playerMode2.addEventListener('click', () => {
-    computerDifficultyBox.classList.add('hidden');
-});
+// playerMode2.addEventListener('click', () => {
+//     computerDifficultyBox.classList.add('hidden');
+// });
 
 // Validation du mode de jeu et des options, établissement et affichage des deux grilles de jeu
 inputValiderDifficulty.addEventListener('click', () => {
@@ -105,7 +105,7 @@ inputValiderDifficulty.addEventListener('click', () => {
     // seront en grande partie ici.
     if (playerMode1.checked) {
         computerGrid.classList.remove('hidden');
-        player2Grid.classList.add('hidden');
+        //player2Grid.classList.add('hidden');
         shipPlacement.classList.remove('hidden');
         generateGrid(playerGrid, playerSpots, 0);
         generateGrid(computerGrid, computerSpots, 200);
@@ -125,17 +125,20 @@ inputValiderDifficulty.addEventListener('click', () => {
 
         // Mode deux joueurs. A rendre "indisponible" si pas le temps, sinon, les fonctions
         // pour faire fonctionner ce mode seront ici!
-    } else if (playerMode2.checked) {
-        computerGrid.classList.add('hidden');
-        player2Grid.classList.remove('hidden');
-        shipPlacement.classList.remove('hidden');
-        generateGrid(playerGrid, playerSpots, 0);
-        generateGrid(player2Grid, player2Spots, 200);
-        // shipBoxGrid(); 
-        shipPlaceBox.classList.remove('hidden');
     }
-    displayPlayerShips()
-});
+
+
+//     } else if (playerMode2.checked) {
+//         computerGrid.classList.add('hidden');
+//         player2Grid.classList.remove('hidden');
+//         shipPlacement.classList.remove('hidden');
+//         generateGrid(playerGrid, playerSpots, 0);
+//         generateGrid(player2Grid, player2Spots, 200);
+//         // shipBoxGrid(); 
+//         shipPlaceBox.classList.remove('hidden');
+//     }
+//     displayPlayerShips()
+ });
 
 // Fonction qui va générer les grilles de jeu et implanter 10 lignes de 10 cases, et attribuer
 // un id unique à chacune des cases pour les utiliser plus tard
