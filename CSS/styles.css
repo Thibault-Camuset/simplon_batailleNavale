@@ -125,12 +125,17 @@ body {
     color:white;
 }
 
+#playInput {
+    position: fixed;
+    bottom:50vh;
+    left:48.5vw;
+}
 
 #inputPseudo:focus::placeholder {
     color:transparent;
 }
 
-#inputValider, #inputValiderDifficulty, #shipPlacement {
+#inputValider, #inputValiderDifficulty, #shipPlacement, #playInput {
     margin-left:auto;
     margin-right:auto;
     border: 3px solid black;
@@ -141,7 +146,7 @@ body {
     font-weight:bold;
 }
 
-#inputValider:hover, #inputValiderDifficulty:hover, #shipPlacement:hover {
+#inputValider:hover, #inputValiderDifficulty:hover, #shipPlacement:hover, #playInput:hover {
     background-color:black;
     /* color:#00ff00; */
     color: #00FF00 ;

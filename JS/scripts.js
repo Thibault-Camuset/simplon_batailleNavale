@@ -90,7 +90,7 @@ inputValider.addEventListener('click', () => {
 
 // Ecouteurs sur les deux options de jeu, et affichage de la difficulté de l'ordinateur si besoin
 playerMode1.addEventListener('click', () => {
-    computerDifficultyBox.classList.remove('hidden');
+    //computerDifficultyBox.classList.remove('hidden');
 });
 // playerMode2.addEventListener('click', () => {
 //     computerDifficultyBox.classList.add('hidden');
@@ -123,6 +123,7 @@ inputValiderDifficulty.addEventListener('click', () => {
         randomComputerShip(shipTypes[3]);
         randomComputerShip(shipTypes[4]);
 
+        displayPlayerShips()
         // Mode deux joueurs. A rendre "indisponible" si pas le temps, sinon, les fonctions
         // pour faire fonctionner ce mode seront ici!
     }
