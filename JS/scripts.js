@@ -202,7 +202,7 @@ let playerShips = [
 // Fonction qui attribue les vaisseau au joueur en fonction de la difficulté, et appelle la fonction qui les dessine dans la boite
 function displayPlayerShips() {
     if (playerDifficulty.value == "Facile") {
-        playerShipIndexes = [1, 2, 3, 4, 5, 6];
+        playerShipIndexes = [6, 5, 4, 3, 2, 1];
         drawPlayerShips(playerShipIndexes);
     } else if (playerDifficulty.value == "Normal") {
         playerShipIndexes = [0, 1, 2, 4, 6];

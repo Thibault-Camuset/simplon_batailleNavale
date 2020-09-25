@@ -133,7 +133,7 @@ h1 {
 
 #playInput {
     position: fixed;
-    bottom:50vh;
+    bottom:65vh;
     left:48.5vw;
 }
 
@@ -347,14 +347,20 @@ bouton de validation */
 #playerDifficulty {
     margin-top:3vh;
     height:3.5vh;
-    width: 35vh;
+
     background-color: black;
     border:2px solid #00FF00;
     color: #00FF00;
     font-weight:bold;
     text-align-last:center;
     font-size:1vw;
+    appearance: none;
+    background-image: url('../IMG/chevron.png');
+    background-repeat: no-repeat;
+    background-position-x: right;
 }
+
+
 
 #labelPlayerMode {
     margin-bottom:1vh;
@@ -401,9 +407,9 @@ bouton de validation */
 /* Définition de la troisième page, celle du jeu, et gestion des deux grilles du joueur et
 de l'ordinateur */
 #containerGameGrid {
-    width: 65vh;
-    height: 65vh;
-    top: 20vh;
+    width: 95vh;
+    height: 95vh;
+    top: 5vh;
 }
 
 .grid {
@@ -437,13 +443,13 @@ de l'ordinateur */
 
 #playerGrid {
     position:fixed;
-    top:20vh;
+    top:5vh;
     left:20vw;
 }
 
 #computerGrid, #player2Grid {
     position:fixed;
-    top:20vh;
+    top:5vh;
     right:20vw;
     background-color: black;
 }
@@ -457,14 +463,14 @@ de l'ordinateur */
     position:fixed;
     width:30vh;
     height:48vh;
-    top:32vh;
+    top:5vh;
     left:3vw;
     background-color: transparent;
 }
 
 #shipPlacement {
     position: fixed;
-    bottom: 14vh;
+    top: 55vh;
     left: 4.5vw;
 }
 
