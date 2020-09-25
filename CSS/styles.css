@@ -413,8 +413,8 @@ de l'ordinateur */
 }
 
 .grid {
-    width:60vh;
-    height:60vh;
+    width:30vw;
+    height:30vw;
     display:flex;
     flex-wrap: wrap;
     background-color :black;
@@ -422,8 +422,8 @@ de l'ordinateur */
 }
 
 .gridBox {
-    width:6vh;
-    height:6vh;
+    width:3vw;
+    height:3vw;
     border: 1px solid #00ff00;
     margin: -1px;
     background-color:black;

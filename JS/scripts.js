@@ -812,6 +812,7 @@ function loadItemsFromStorage() {
 // Ecouteur de base qui lance le jeu quand on clique sur "jouer", et ajoute les écouteurs sur les spots de l'ordinateur a ce moment
 playInput.addEventListener('click', () => {
     game();
+    playInput.classList.add('hidden');
 
     computerSpots.forEach(spot => spot.addEventListener('click', () => {
         showSpot(spot);
