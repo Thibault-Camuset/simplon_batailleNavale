@@ -407,14 +407,14 @@ bouton de validation */
 /* Définition de la troisième page, celle du jeu, et gestion des deux grilles du joueur et
 de l'ordinateur */
 #containerGameGrid {
-    width: 95vh;
+    width: 95vw;
     height: 95vh;
     top: 5vh;
 }
 
 .grid {
-    width:30vw;
-    height:30vw;
+    width:25vw;
+    height:25vw;
     display:flex;
     flex-wrap: wrap;
     background-color :black;
@@ -422,8 +422,8 @@ de l'ordinateur */
 }
 
 .gridBox {
-    width:3vw;
-    height:3vw;
+    width:2.5vw;
+    height:2.5vw;
     border: 1px solid #00ff00;
     margin: -1px;
     background-color:black;
@@ -472,6 +472,18 @@ de l'ordinateur */
     position: fixed;
     top: 55vh;
     left: 4.5vw;
+}
+
+#chat-box {
+    background-color: black;
+    border:1px solid #00FF00;
+    width:57vw;
+    height:27vh;
+    position:absolute;
+    bottom:5vh;
+    left:22.5vw;
+    overflow:scroll;
+    font-size:2vh;
 }
 
 #turnInfo {

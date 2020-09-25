@@ -41,6 +41,9 @@ let turnInfo = document.getElementById('turnInfo');
 let userInfo = document.getElementById('otherInfo');
 let playInput = document.getElementById('playInput');
 let scoreTab = document.getElementById('score-tab');
+let chatBox = document.getElementById('chat-box');
+
+chatBox.innerHTML = "";
 
 // Tableau qui contiendront l'état des grilles de chaque "joueur"
 let playerSpots = [];
@@ -492,13 +495,13 @@ function game() {
     }
 
     if (currentTurn == 'player') {
-        turnInfo.innerHTML = "A vous de jouer Capitaine " + inputPseudo.value + "!";
+        chatBox.innerHTML += "A vous de jouer Capitaine " + inputPseudo.value + "!</br>";
 
 
 
 
     } else if (currentTurn == 'computer') {
-        turnInfo.innerHTML = "Au tour de votre adversaire!";
+        chatBox.innerHTML += "Au tour de votre adversaire!</br>";
         canPlay = false;
         window.setTimeout(computerTurn, 1000);
 
@@ -588,7 +591,7 @@ function computerTurn() {
         }
 
         currentTurn = 'player';
-        turnInfo.innerHTML = "A vous de jouer Capitaine " + inputPseudo.value + "!";
+        chatBox.innerHTML += "A vous de jouer Capitaine " + inputPseudo.value + "!</br>";
         canPlay = true;
 
 
@@ -654,7 +657,7 @@ function computerTurn() {
         }
 
         currentTurn = 'player';
-        turnInfo.innerHTML = "A vous de jouer Capitaine " + inputPseudo.value + "!";
+        chatBox.innerHTML += "A vous de jouer Capitaine " + inputPseudo.value + "!</br>";
         canPlay = true;
     }
 }
@@ -683,64 +686,64 @@ function winConditions() {
 
     // Partie qui compte le score du joueur
     if (corvetteCounter == 2) {
-        userInfo.innerHTML = "Vous avez détruit la Corvette de votre adversaire!";
+        chatBox.innerHTML += "Vous avez détruit la Corvette de votre adversaire!</br>";
         corvetteCounter = 10;
     } if (fregateCounter == 3) {
-        userInfo.innerHTML = "Vous avez détruit la Frégate de votre adversaire!";
+        chatBox.innerHTML += "Vous avez détruit la Frégate de votre adversaire!</br>";
         fregateCounter = 10;
     } if (navetteCounter == 3) {
-        userInfo.innerHTML = "Vous avez détruit la Navette de votre adversaire!";
+        chatBox.innerHTML += "Vous avez détruit la Navette de votre adversaire!</br>";
         navetteCounter = 10;
     } if (croiseurCounter == 4) {
-        userInfo.innerHTML = "Vous avez détruit le Croiseur de votre adversaire!";
+        chatBox.innerHTML += "Vous avez détruit le Croiseur de votre adversaire!</br>";
         croiseurCounter = 10;
     } if (commandementCounter == 5) {
-        userInfo.innerHTML = "Vous avez détruit le Vaisseau de Commandement de votre adversaire!";
+        chatBox.innerHTML += "Vous avez détruit le Vaisseau de Commandement de votre adversaire!</br>";
         commandementCounter = 10;
 
 
         // Partie qui compte le score de l'ordinateur et ce en fonction de la difficulté
     } if (corvetteComputerCounter == 2) {
-        userInfo.innerHTML = "Votre Corvette a été détruite!";
+        chatBox.innerHTML += "Votre Corvette a été détruite!</br>";
         corvetteComputerCounter = 10;
     } if (fregateComputerCounter == 3) {
-        userInfo.innerHTML = "Votre Frégate a été détruite!";
+        chatBox.innerHTML += "Votre Frégate a été détruite!</br>";
         fregateComputerCounter = 10;
     } if (navetteComputerCounter == 3) {
-        userInfo.innerHTML = "Votre Navette a été détruite!";
+        chatBox.innerHTML += "Votre Navette a été détruite!</br>";
         navetteComputerCounter = 10;
     } if (cuirasseComputerCounter == 3) {
-        userInfo.innerHTML = "Votre Cuirassé a été détruite!";
+        chatBox.innerHTML += "Votre Cuirassé a été détruite!</br>";
         cuirasseComputerCounter = 10;
     } if (croiseurComputerCounter == 4) {
-        userInfo.innerHTML = "Votre Croiseur a été détruit!";
+        chatBox.innerHTML += "Votre Croiseur a été détruit!</br>";
         croiseurComputerCounter = 10;
     } if (cargoComputerCounter == 4) {
-        userInfo.innerHTML = "Votre Cargo a été détruit!";
+        chatBox.innerHTML += "Votre Cargo a été détruit!</br>";
         cargoComputerCounter = 10;
     } if (commandementComputerCounter == 5) {
-        userInfo.innerHTML = "Votre Vaisseau de Commandement a été détruit!";
+        chatBox.innerHTML += "Votre Vaisseau de Commandement a été détruit!</br>";
         commandementComputerCounter = 10;
 
 
     } if (corvetteCounter + fregateCounter + navetteCounter + croiseurCounter + commandementCounter == 50) {
-        userInfo.innerHTML = "Vous avez gagné!";
+        chatBox.innerHTML += "Vous avez gagné!</br>";
         gameOver();
     }
 
     if (playerDifficulty.value == "Facile") {
         if (fregateComputerCounter + navetteComputerCounter + cuirasseComputerCounter + croiseurComputerCounter + cargoComputerCounter + commandementComputerCounter == 60) {
-            userInfo.innerHTML = "Votre adversaire a gagné!";
+            chatBox.innerHTML += "Votre adversaire a gagné!</br>";
             gameOver();
         }
     } else if (playerDifficulty.value == "Normal") {
         if (corvetteComputerCounter + fregateComputerCounter + navetteComputerCounter + croiseurComputerCounter + commandementComputerCounter == 50) {
-            userInfo.innerHTML = "Votre adversaire a gagné!";
+            chatBox.innerHTML += "Votre adversaire a gagné!</br>";
             gameOver();
         }
     } else if (playerDifficulty.value == "Difficile") {
         if (fregateComputerCounter + navetteComputerCounter + cuirasseComputerCounter + commandementComputerCounter == 40) {
-            userInfo.innerHTML = "Votre adversaire a gagné!";
+            chatBox.innerHTML += "Votre adversaire a gagné!</br>";
             gameOver();
         }
 
