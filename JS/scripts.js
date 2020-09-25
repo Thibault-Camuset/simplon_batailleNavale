@@ -252,6 +252,23 @@ function drawPlayerShips(list) {
             newShipPart.classList.add(playerShips[list[i]].name, 'gridBox');
             newShipPart.id = playerShips[list[i]].name + '-' + y;
 
+
+            if (document.body.style.color == "rgb(0, 255, 0)") {
+                newShipPart.classList.add('gridGreen');
+            } else if (document.body.style.color == "rgb(255, 0, 0)") {
+                newShipPart.classList.add('gridRed');
+            } else if (document.body.style.color == "rgb(186, 85, 211)") {
+                newShipPart.classList.add('gridPurple');
+            } else if (document.body.style.color == "rgb(0, 0, 205)") {
+                newShipPart.classList.add('gridBlue');
+            } else if (document.body.style.color == "rgb(255, 140, 0)") {
+                newShipPart.classList.add('gridOrange');
+            } else if (document.body.style.color == "rgb(253, 108, 158)") {
+                newShipPart.classList.add('gridPink');
+            }
+
+
+
             newShipContainer.appendChild(newShipPart);
         }
     }
