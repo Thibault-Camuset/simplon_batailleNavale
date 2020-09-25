@@ -132,17 +132,17 @@ inputValiderDifficulty.addEventListener('click', () => {
     }
 
 
-//     } else if (playerMode2.checked) {
-//         computerGrid.classList.add('hidden');
-//         player2Grid.classList.remove('hidden');
-//         shipPlacement.classList.remove('hidden');
-//         generateGrid(playerGrid, playerSpots, 0);
-//         generateGrid(player2Grid, player2Spots, 200);
-//         // shipBoxGrid(); 
-//         shipPlaceBox.classList.remove('hidden');
-//     }
-//     displayPlayerShips()
- });
+    //     } else if (playerMode2.checked) {
+    //         computerGrid.classList.add('hidden');
+    //         player2Grid.classList.remove('hidden');
+    //         shipPlacement.classList.remove('hidden');
+    //         generateGrid(playerGrid, playerSpots, 0);
+    //         generateGrid(player2Grid, player2Spots, 200);
+    //         // shipBoxGrid(); 
+    //         shipPlaceBox.classList.remove('hidden');
+    //     }
+    //     displayPlayerShips()
+});
 
 // Fonction qui va générer les grilles de jeu et implanter 10 lignes de 10 cases, et attribuer
 // un id unique à chacune des cases pour les utiliser plus tard
@@ -728,39 +728,40 @@ function winConditions() {
 
     } if (corvetteCounter + fregateCounter + navetteCounter + croiseurCounter + commandementCounter == 50) {
         chatBox.innerHTML += "Vous avez gagné!</br>";
-        gameOver();
+        gameOver(true);
     }
 
     if (playerDifficulty.value == "Facile") {
         if (fregateComputerCounter + navetteComputerCounter + cuirasseComputerCounter + croiseurComputerCounter + cargoComputerCounter + commandementComputerCounter == 60) {
             chatBox.innerHTML += "Votre adversaire a gagné!</br>";
-            gameOver();
+            gameOver(false);
         }
     } else if (playerDifficulty.value == "Normal") {
         if (corvetteComputerCounter + fregateComputerCounter + navetteComputerCounter + croiseurComputerCounter + commandementComputerCounter == 50) {
             chatBox.innerHTML += "Votre adversaire a gagné!</br>";
-            gameOver();
+            gameOver(false);
         }
     } else if (playerDifficulty.value == "Difficile") {
         if (fregateComputerCounter + navetteComputerCounter + cuirasseComputerCounter + commandementComputerCounter == 40) {
             chatBox.innerHTML += "Votre adversaire a gagné!</br>";
-            gameOver();
+            gameOver(false);
         }
 
     }
 }
 
 // Fonction qui se lance quand la partie est gagné par le joueur ou l'ordinateur, et appelle la page de scores
-function gameOver() {
+function gameOver(status) {
     gameOverStatus = true;
     containerGameGrid.classList.add('hidden');
     scoreTab.classList.remove('hidden');
 
-    loadItemsFromStorage();
-    let allScores = scoreTab.querySelectorAll('score');
-    allScores.forEach(score => scoreTab.removeChild(score));
-    saveItemsInStorage();
-    loadItemsFromStorage();
+    if (status == true) {
+        loadItemsFromStorage();
+        saveItemsInStorage();
+    } else if (status == false) {
+        // quelque chose pour annoncer la défaite?
+    }
 }
 
 // Fonction qui sauvegarde le score du joueur dans le localstorage de Sandrine
@@ -772,7 +773,7 @@ function saveItemsInStorage() {
     let scoreItem = {
         id: scoreCounter,
         score: playerScore,
-        text: "Vous avez gagné en " + playerScore + " coups le " + newDateGood
+        text: "Gagné en " + playerScore + " coups le " + newDateGood
     };
 
     scoreList.push(scoreItem);
@@ -781,24 +782,16 @@ function saveItemsInStorage() {
 
     scoreCounter++;
     localStorage.setItem('counter', scoreCounter);
-}
-
-// Fonction qui charge les scores du joueur et les met à jour
-function loadItemsFromStorage() {
-    const storageScores = localStorage.getItem("score-items");
-    const itemsScores = JSON.parse(storageScores);
 
 
 
-    if (itemsScores != null) {
-        itemScoresList = itemsScores;
+    if (scoreList != null) {
 
-
-        for (x = 0; x < itemsScores.length; x++) {
+        for (x = 0; x < scoreList.length; x++) {
             let newItem = document.createElement('div');
             newItem.classList.add('score');
-            newItem.id = itemsScores[x].id;
-            newItem.innerText = itemsScores[x].text;
+            newItem.id = scoreList[x].id;
+            newItem.innerText = scoreList[x].text;
 
             scoreTab.appendChild(newItem);
         }
@@ -806,6 +799,14 @@ function loadItemsFromStorage() {
     } else {
         return false;
     }
+}
+
+// Fonction qui charge les scores du joueur et les met à jour
+function loadItemsFromStorage() {
+    const storageScores = localStorage.getItem("score-items");
+    scoreList = JSON.parse(storageScores);
+
+
 
     if (CLEAR_LOCAL_STORAGE) {
         localStorage.clear();

@@ -596,9 +596,16 @@ de l'ordinateur */
 }
 
 #score-tab {
-    height:70vh;
-    width:40vw;
+    height:75vh;
+    width:75vw;
+    position:fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
     background-color:black;
+    padding:3vh;
+    overflow:scroll;
+    border:3px solid #00FF00;
 }
 
 /* Classe hidden utilisée sur toutes les pages pour afficher/cacher les éléments */
