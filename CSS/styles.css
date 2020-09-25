@@ -338,10 +338,19 @@ bouton de validation */
 #labelPlayerDifficulty {
     margin-top:5vh;
     font-size: 17px;
+    line-height:3vh;
 }
 
 #playerDifficulty {
     margin-top:3vh;
+    height:7vh;
+    background-color: black;
+    border:2px solid #00FF00;
+    color: #00FF00;
+    font-weight:bold;
+    appearance: none;
+    text-align:center;
+    font-size:3vh;
 }
 
 #labelPlayerMode {

@@ -842,6 +842,8 @@ function changecolor(color) {
     shipPlacement.classList.add('color' + color);
     inputPseudo.classList.remove('borderPink', 'borderRed', 'borderPurple', 'borderOrange', 'borderBlue', 'borderGreen');
     inputPseudo.classList.add('border' + color);
+    playerDifficulty.classList.remove('colorPink', 'colorRed', 'colorPurple', 'colorOrange', 'colorBlue', 'colorGreen');
+    playerDifficulty.classList.add('color' + color);
 }
 
 // Easters Eggs.... Et... PONEYS!!!
