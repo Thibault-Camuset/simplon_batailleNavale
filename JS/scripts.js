@@ -844,6 +844,8 @@ function changecolor(color) {
     inputPseudo.classList.add('border' + color);
     playerDifficulty.classList.remove('colorPink', 'colorRed', 'colorPurple', 'colorOrange', 'colorBlue', 'colorGreen');
     playerDifficulty.classList.add('color' + color);
+    playInput.classList.remove('colorPink', 'colorRed', 'colorPurple', 'colorOrange', 'colorBlue', 'colorGreen');
+    playInput.classList.add('color' + color);
 }
 
 // Easters Eggs.... Et... PONEYS!!!
