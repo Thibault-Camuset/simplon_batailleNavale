@@ -352,7 +352,7 @@ bouton de validation */
     color: #00FF00;
     font-weight:bold;
     appearance: none;
-    text-align:center;
+    text-align-last:center;
     font-size:1.5vw;
 }
 
