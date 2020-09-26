@@ -1,6 +1,6 @@
 Projet réalisé au cours de la formation Simplon.co de développeur Web et Web Mobile, par :
 
-Mathilde Migne, 
+[Mathilde Migne](https://github.com/Mathildemgn), 
 Sandrine Jakubowski 
 et Thibault Camuset. 
 
