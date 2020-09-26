@@ -609,17 +609,26 @@ function computerTurn() {
         // réinitialise la liste des coups possible pour éviter les doublons
         newPossibleComputerHits = [];
         for (i = 0; i < currentHuntSpots.length; i++) {
+            const currentId = parseInt(currentHuntSpots[i].dataset.id);
             // détermine TOUTES les cases possibles autour de TOUTES les cases déjà "chassées"
-            newPossibleComputerHits.push(playerSpots[parseInt(currentHuntSpots[i].dataset.id) - 1]);
-            newPossibleComputerHits.push(playerSpots[parseInt(currentHuntSpots[i].dataset.id) - 10]);
-            newPossibleComputerHits.push(playerSpots[parseInt(currentHuntSpots[i].dataset.id) + 1]);
-            newPossibleComputerHits.push(playerSpots[parseInt(currentHuntSpots[i].dataset.id) + 10]);
+            if (currentId%10 != 0) {
+            newPossibleComputerHits.push(playerSpots[currentId - 1]);
+            }
+            if (currentId%10 != 9) {   
+            newPossibleComputerHits.push(playerSpots[currentId + 1]);
+            }
+            if (currentId >= 10) {
+            newPossibleComputerHits.push(playerSpots[currentId - 10]);
+            }
+            if (currentId < 90) {
+            newPossibleComputerHits.push(playerSpots[currentId + 10]);
+            }
         }
 
         // enlève les possible retour undefined (cases a l'extérieur de la grille)
-        newPossibleComputerHits = newPossibleComputerHits.filter(function (clean) {
-            return clean != undefined;
-        })
+        // newPossibleComputerHits = newPossibleComputerHits.filter(function (clean) {
+        //    return clean != undefined;
+        // })
 
         // vérifie pour chaque case à toucher dans le tableau si elle n'a pas déjà été touchée
         for (i = 0; i < newPossibleComputerHits.length; i++) {
@@ -691,7 +700,7 @@ function computerPointsCount(index) {
 
 // Fonction qui vérifie les conditions de victoire, et appelle si nécessaire le game over
 function winConditions() {
-
+    console.log('currentHuntSpot :'+currentHuntSpots.length);
     // Partie qui compte le score du joueur
     if (corvetteCounter == 2) {
         chatBox.innerHTML += "Vous avez détruit la Corvette de votre adversaire!</br>";
@@ -713,24 +722,32 @@ function winConditions() {
         // Partie qui compte le score de l'ordinateur et ce en fonction de la difficulté
     } if (corvetteComputerCounter == 2) {
         chatBox.innerHTML += "Votre Corvette a été détruite!</br>";
+        currentHuntSpots = currentHuntSpots.filter(spot=> !spot.classList.contains('Corvette'));
         corvetteComputerCounter = 10;
+    
     } if (fregateComputerCounter == 3) {
         chatBox.innerHTML += "Votre Frégate a été détruite!</br>";
+        currentHuntSpots = currentHuntSpots.filter(spot=> !spot.classList.contains('Fregate'));
         fregateComputerCounter = 10;
     } if (navetteComputerCounter == 3) {
         chatBox.innerHTML += "Votre Navette a été détruite!</br>";
+        currentHuntSpots = currentHuntSpots.filter(spot => !spot.classList.contains('Navette'));
         navetteComputerCounter = 10;
     } if (cuirasseComputerCounter == 3) {
         chatBox.innerHTML += "Votre Cuirassé a été détruite!</br>";
+        currentHuntSpots = currentHuntSpots.filter(spot => !spot.classList.contains('Cuirasse'));
         cuirasseComputerCounter = 10;
     } if (croiseurComputerCounter == 4) {
         chatBox.innerHTML += "Votre Croiseur a été détruit!</br>";
+        currentHuntSpots = currentHuntSpots.filter(spot => !spot.classList.contains('Croiseur'));
         croiseurComputerCounter = 10;
     } if (cargoComputerCounter == 4) {
         chatBox.innerHTML += "Votre Cargo a été détruit!</br>";
+        currentHuntSpots = currentHuntSpots.filter(spot=> !spot.classList.contains('Cargo'));
         cargoComputerCounter = 10;
     } if (commandementComputerCounter == 5) {
         chatBox.innerHTML += "Votre Vaisseau de Commandement a été détruit!</br>";
+        currentHuntSpots = currentHuntSpots.filter(spot => !spot.classList.contains('Vaisseau_de_Commandement'));
         commandementComputerCounter = 10;
 
         // vérification simple pour la victoire du joueur
@@ -757,6 +774,7 @@ function winConditions() {
         }
 
     }
+    console.log('currentHuntSpot after :'+currentHuntSpots.length);
 }
 
 // Fonction qui se lance quand la partie est gagné par le joueur ou l'ordinateur, et appelle la page de scores
@@ -818,7 +836,7 @@ function loadItemsFromStorage() {
     // récuparation des scores et du counter, pour les utiliser ensuite
     const storageScores = localStorage.getItem("score-items");
     scoreList = JSON.parse(storageScores);
-    scoreCounter = +localStorage.getItem('counter');
+    scoreCounter = localStorage.getItem('counter');
     }
 
     if (CLEAR_LOCAL_STORAGE) {
