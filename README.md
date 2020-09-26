@@ -14,7 +14,7 @@
 - Maquette: https://www.figma.com/file/GeuMXPK3fCjY0XLe6OTMGV/Maquette?node-id=0%3A
 
 
-- Gestion de projet: 
+- Gestion de projet: https://trello.com/b/7UaZ57XN/projet-simplon-bataille-navale
 
 
 ---
