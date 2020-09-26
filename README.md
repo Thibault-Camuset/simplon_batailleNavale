@@ -4,15 +4,12 @@
 - [Sandrine Jakubowski](https://github.com/SandrineJa) 
 - et [Thibault Camuset](https://github.com/Thibault-Camuset). 
 
-
-
-
-Petit projet de site, contenant un jeu de type "Bataille Navale" fonctionnel et jouable, codé en Javascript natif.
+*Petit projet de site, contenant un jeu de type "Bataille Navale" fonctionnel et jouable, codé en Javascript natif.*
 
 
 
 
-Les consignes principales à respecter étant:
+### Les consignes principales à respecter étant:
 
 - Un jeu de type "Bataille Navale".
 - Le joueur doit pouvoir rentrer des informations, comme ici son pseudo, mode de joueur, et difficulté.
@@ -22,7 +19,7 @@ Les consignes principales à respecter étant:
 
 - Le site/jeu doit pouvoir s'adapter sur Web, Tablette et Mobile.
 
-(Facultatifs/Bonus) :
+*(Facultatifs/Bonus):*
 - Les scores du joueurs sont sauvegardés (ici en LocalStorage)
 - Le joueur doit pouvoir jouer en ligne contre un autre joueur (pas encore implémenté)
 
@@ -30,8 +27,8 @@ Les consignes principales à respecter étant:
 
 
 
-Aucune procédure n'est nécessaire pour faire fonctionner ce site, et jouer au jeu, étant donné qu'il ne nécessite pas dans l'état actuel un serveur.
-Il faut uniquement veiller à ce que les scripts/le javascript ne soit pas désactivé sur le navigateur que l'on utilisera.
+_Aucune procédure n'est nécessaire pour faire fonctionner ce site, et jouer au jeu, étant donné qu'il ne nécessite pas dans l'état actuel un serveur.
+Il faut uniquement veiller à ce que les scripts/le javascript ne soit pas désactivé sur le navigateur que l'on utilisera._
 
 
 
