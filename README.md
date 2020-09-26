@@ -7,6 +7,7 @@
 *Petit projet de site, contenant un jeu de type "Bataille Navale" fonctionnel et jouable, codé en Javascript natif.*
 
 
+---
 
 
 ### Les consignes principales à respecter étant:
@@ -24,7 +25,7 @@
 - Le joueur doit pouvoir jouer en ligne contre un autre joueur (pas encore implémenté)
 
 
-
+---
 
 
 _Aucune procédure n'est nécessaire pour faire fonctionner ce site, et jouer au jeu, étant donné qu'il ne nécessite pas dans l'état actuel un serveur.
