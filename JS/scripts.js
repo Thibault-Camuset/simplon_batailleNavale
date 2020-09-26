@@ -124,7 +124,7 @@ inputValiderDifficulty.addEventListener('click', () => {
         // Crée les vaisseaux du joueur. La difficulté peut être implantée ici.
         //spawnPlayerShips ();
 
-        // Détermine quels vaisseaux de la liste des vaisseaux disponibles sont affichés
+        // Détermine quels vaisseaux de la liste des vaisseaux disponibles sont affichés pour l'ordinateur
         // il est donc possible de moduler en fonction de la difficulté ici.
         randomComputerShip(shipTypes[0]);
         randomComputerShip(shipTypes[1]);
@@ -132,7 +132,9 @@ inputValiderDifficulty.addEventListener('click', () => {
         randomComputerShip(shipTypes[3]);
         randomComputerShip(shipTypes[4]);
 
+        // Appel de la fonction qui attribue les vaisseaux au joueur en fonction de la difficultée choisie
         displayPlayerShips()
+
         // Mode deux joueurs. A rendre "indisponible" si pas le temps, sinon, les fonctions
         // pour faire fonctionner ce mode seront ici!
     }
@@ -148,6 +150,7 @@ inputValiderDifficulty.addEventListener('click', () => {
     //         shipPlaceBox.classList.remove('hidden');
     //     }
     //     displayPlayerShips()
+
 });
 
 // Fonction qui va générer les grilles de jeu et implanter 10 lignes de 10 cases, et attribuer
@@ -209,6 +212,7 @@ let playerShips = [
 ];
 
 // Fonction qui attribue les vaisseau au joueur en fonction de la difficulté, et appelle la fonction qui les dessine dans la boite
+// ET ajoute les écouteurs pour le drag en drop à ce moment
 function displayPlayerShips() {
     if (playerDifficulty.value == "Facile") {
         playerShipIndexes = [6, 5, 4, 3, 2, 1];
@@ -261,7 +265,6 @@ function drawPlayerShips(list) {
             newShipPart.classList.add(playerShips[list[i]].name, 'gridBox');
             newShipPart.id = playerShips[list[i]].name + '-' + y;
 
-
             if (document.body.style.color == "rgb(0, 255, 0)") {
                 newShipPart.classList.add('gridGreen');
             } else if (document.body.style.color == "rgb(255, 0, 0)") {
@@ -275,8 +278,6 @@ function drawPlayerShips(list) {
             } else if (document.body.style.color == "rgb(253, 108, 158)") {
                 newShipPart.classList.add('gridPink');
             }
-
-
 
             newShipContainer.appendChild(newShipPart);
         }
@@ -763,16 +764,17 @@ function gameOver(status) {
     gameOverStatus = true;
     
     
-
+    // Le status true ici rapporte une victoire, et affiche/compte donc les scores
     if (status == true) {
         containerGameGrid.classList.add('hidden');
         scoreTab.classList.remove('hidden');
         loadItemsFromStorage();
         saveItemsInStorage();
+
+    // Le status false ici rapporte une défaite et donc n'affiche pas les scores, mais un message de défaite    
     } else if (status == false) {
         containerGameGrid.classList.add('hidden');
         gameOverTab.classList.remove('hidden');
-
         gameOverTab.innerHTML = "<p>Vous avez perdu! C'est dommage, essayez une prochaine fois!</p>"
     }
 }
@@ -794,7 +796,6 @@ function saveItemsInStorage() {
     // on ajoute le score à notre liste, et on la garde dans le localstorage
     scoreList.push(scoreItem);
     localStorage.setItem("score-items", JSON.stringify(scoreList));
-
     scoreCounter++;
     localStorage.setItem('counter', scoreCounter);
 
@@ -804,7 +805,6 @@ function saveItemsInStorage() {
             newItem.classList.add('score');
             newItem.id = scoreList[x].id;
             newItem.innerText = scoreList[x].text;
-
             scoreTab.appendChild(newItem);
         }  
 }
