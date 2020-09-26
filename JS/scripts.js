@@ -42,15 +42,13 @@ let userInfo = document.getElementById('otherInfo');
 let playInput = document.getElementById('playInput');
 let scoreTab = document.getElementById('score-tab');
 let chatBox = document.getElementById('chat-box');
+let turnBox = document.getElementById('turn-box');
+let chatContainer = document.getElementById('chat-container');
 
 
 chatBox.innerHTML = "";
-let newTurnBox = document.createElement('div');
-newTurnBox.id = 'turn-box';
-chatBox.appendChild(newTurnBox);
-
-let turnBox = document.getElementById('turn-box');
 turnBox.innerHTML = "";
+
 
 
 // Tableau qui contiendront l'état des grilles de chaque "joueur"

@@ -473,27 +473,32 @@ de l'ordinateur */
     left: 4.5vw;
 }
 
-#chat-box {
-    background-color: black;
-    border:1px solid #00FF00;
+#chat-container {
     width:57vw;
     height:27vh;
     position:absolute;
     bottom:5vh;
     left:22.5vw;
+    background-color:black;
+}
+
+#chat-box {
+    background-color: black;
+    border:3px solid #00FF00;
     overflow:scroll;
-    font-size:2vh;
+    font-size:0.8vw;
+    height:24vh;
+    padding-top:1vh;
+    margin-top:-3px;
 }
 
 #turn-box {
     position: relative;
     top:0;
     height:3vh;
-    border:1px solid #00FF00;
-    margin: -3px;
-    margin-right:3px;
-    padding-top:0.5vh;
-    margin-bottom:1vh;
+    border:3px solid #00FF00;
+    font-size:1vw;
+    padding-bottom:-1vh;
 }
 
 
