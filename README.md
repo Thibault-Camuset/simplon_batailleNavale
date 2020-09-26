@@ -29,7 +29,7 @@
 
 
 _Aucune procédure n'est nécessaire pour faire fonctionner ce site, et jouer au jeu, étant donné qu'il ne nécessite pas dans l'état actuel un serveur.
-Il faut uniquement veiller à ce que les scripts/le javascript ne soit pas désactivé sur le navigateur que l'on utilisera._
+Il faut uniquement veiller à ce que les scripts/le javascript ne soit pas désactivés sur le navigateur que l'on utilisera._
 
 
 
