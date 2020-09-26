@@ -61,7 +61,6 @@ let playerShipsList = [];
 let spotTakken = [];
 let playerShipIndexes = [];
 let scoreList = [];
-let itemScoresList = [];
 let currentHuntSpots = [];
 
 // Variable pour définir la largeur d'une grille de jeu, pour faciliter la manipulation
@@ -798,20 +797,21 @@ function saveItemsInStorage() {
 
             scoreTab.appendChild(newItem);
         }
-        scoreCounter = +localStorage.getItem('counter');
+
+        //scoreCounter = +localStorage.getItem('counter');
     
 }
 
 // Fonction qui charge les scores du joueur et les met à jour
 function loadItemsFromStorage() {
 
-    if (scoreList != null) {
+    if (scoreList.length != 0) {
 
     const storageScores = localStorage.getItem("score-items");
     scoreList = JSON.parse(storageScores);
-    } else {
-        scoreList = [];
+    scoreCounter = +localStorage.getItem('counter');
     }
+
     if (CLEAR_LOCAL_STORAGE) {
         localStorage.clear();
     }
