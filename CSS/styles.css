@@ -354,9 +354,12 @@ bouton de validation */
     text-align-last:center;
     font-size:1vw;
     appearance: none;
+    -moz-appearance: none;
+    -webkit-appearance: none;
     background-image: url('../IMG/chevron.png');
     background-repeat: no-repeat;
     background-position-x: right;
+    background-position-y: center;
 }
 
 
