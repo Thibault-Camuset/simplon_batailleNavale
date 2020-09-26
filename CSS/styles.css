@@ -347,7 +347,6 @@ bouton de validation */
 #playerDifficulty {
     margin-top:3vh;
     height:3.5vh;
-
     background-color: black;
     border:2px solid #00FF00;
     color: #00FF00;
@@ -486,17 +485,18 @@ de l'ordinateur */
     font-size:2vh;
 }
 
-#turnInfo {
-    position:fixed;
-    top:10vh;
-    left:28vh;
+#turn-box {
+    position: relative;
+    top:0;
+    height:3vh;
+    border:1px solid #00FF00;
+    margin: -3px;
+    margin-right:3px;
+    padding-top:0.5vh;
+    margin-bottom:1vh;
 }
 
-#otherInfo {
-    position: fixed;
-    bottom:10vh;
-    right:28vh;
-}
+
 
 .Corvette {
     background-color: orange;

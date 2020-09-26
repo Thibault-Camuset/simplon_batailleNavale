@@ -43,7 +43,15 @@ let playInput = document.getElementById('playInput');
 let scoreTab = document.getElementById('score-tab');
 let chatBox = document.getElementById('chat-box');
 
+
 chatBox.innerHTML = "";
+let newTurnBox = document.createElement('div');
+newTurnBox.id = 'turn-box';
+chatBox.appendChild(newTurnBox);
+
+let turnBox = document.getElementById('turn-box');
+turnBox.innerHTML = "";
+
 
 // Tableau qui contiendront l'état des grilles de chaque "joueur"
 let playerSpots = [];
@@ -495,13 +503,13 @@ function game() {
     }
 
     if (currentTurn == 'player') {
-        chatBox.innerHTML += "A vous de jouer Capitaine " + inputPseudo.value + "!</br>";
+        turnBox.innerHTML = "A vous de jouer Capitaine " + inputPseudo.value + "!";
 
 
 
 
     } else if (currentTurn == 'computer') {
-        chatBox.innerHTML += "Au tour de votre adversaire!</br>";
+        turnBox.innerHTML = "Au tour de votre adversaire!";
         canPlay = false;
         window.setTimeout(computerTurn, 1000);
 
@@ -591,7 +599,7 @@ function computerTurn() {
         }
 
         currentTurn = 'player';
-        chatBox.innerHTML += "A vous de jouer Capitaine " + inputPseudo.value + "!</br>";
+        turnBox.innerHTML = "A vous de jouer Capitaine " + inputPseudo.value + "!";
         canPlay = true;
 
 
@@ -657,7 +665,7 @@ function computerTurn() {
         }
 
         currentTurn = 'player';
-        chatBox.innerHTML += "A vous de jouer Capitaine " + inputPseudo.value + "!</br>";
+        turnBox.innerHTML = "A vous de jouer Capitaine " + inputPseudo.value + "!";
         canPlay = true;
     }
 }
@@ -777,15 +785,10 @@ function saveItemsInStorage() {
     };
 
     scoreList.push(scoreItem);
-
     localStorage.setItem("score-items", JSON.stringify(scoreList));
 
     scoreCounter++;
     localStorage.setItem('counter', scoreCounter);
-
-
-
-    if (scoreList != null) {
 
         for (x = 0; x < scoreList.length; x++) {
             let newItem = document.createElement('div');
@@ -796,18 +799,19 @@ function saveItemsInStorage() {
             scoreTab.appendChild(newItem);
         }
         scoreCounter = +localStorage.getItem('counter');
-    } else {
-        return false;
-    }
+    
 }
 
 // Fonction qui charge les scores du joueur et les met à jour
 function loadItemsFromStorage() {
+
+    if (scoreList != null) {
+
     const storageScores = localStorage.getItem("score-items");
     scoreList = JSON.parse(storageScores);
-
-
-
+    } else {
+        scoreList = [];
+    }
     if (CLEAR_LOCAL_STORAGE) {
         localStorage.clear();
     }
@@ -868,6 +872,12 @@ function changecolor(color) {
     playerDifficulty.classList.add('color' + color);
     playInput.classList.remove('colorPink', 'colorRed', 'colorPurple', 'colorOrange', 'colorBlue', 'colorGreen');
     playInput.classList.add('color' + color);
+    scoreTab.classList.remove('borderPink', 'borderRed', 'borderPurple', 'borderOrange', 'borderBlue', 'borderGreen');
+    scoreTab.classList.add('border' + color);
+    chatBox.classList.remove('borderPink', 'borderRed', 'borderPurple', 'borderOrange', 'borderBlue', 'borderGreen');
+    chatBox.classList.add('border' + color);
+    turnBox.classList.remove('borderPink', 'borderRed', 'borderPurple', 'borderOrange', 'borderBlue', 'borderGreen');
+    turnBox.classList.add('border' + color);
 }
 
 // Easters Eggs.... Et... PONEYS!!!
