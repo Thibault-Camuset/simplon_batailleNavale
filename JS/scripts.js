@@ -44,8 +44,9 @@ let scoreTab = document.getElementById('score-tab');
 let chatBox = document.getElementById('chat-box');
 let turnBox = document.getElementById('turn-box');
 let chatContainer = document.getElementById('chat-container');
+let gameOverTab = document.getElementById('game-over-tab');
 
-
+// Pour être sûr que les boites de dialogues soient bien vides.
 chatBox.innerHTML = "";
 turnBox.innerHTML = "";
 
@@ -282,7 +283,7 @@ function drawPlayerShips(list) {
     }
 }
 
-// Définition des différent type de vaisseaux, noms/classes et leur longueurs (deux types de placements)
+// Définition des différent type de vaisseaux, noms/classes et leur longueurs (deux types de placements), pour le random de l'ordinateur
 let shipTypes = [
     {
         name: 'Corvette',
@@ -513,6 +514,7 @@ function game() {
     }
 }
 
+// compteurs pour le score du joueur
 let corvetteCounter = 0;
 let fregateCounter = 0;
 let navetteCounter = 0;
@@ -556,7 +558,7 @@ function showSpot(spot) {
 }
 
 
-// compteurs pour le score
+// compteurs pour le score de l'ordinateur (en fonction de la difficulté)
 let corvetteComputerCounter = 0;
 let fregateComputerCounter = 0;
 let navetteComputerCounter = 0;
@@ -730,12 +732,13 @@ function winConditions() {
         chatBox.innerHTML += "Votre Vaisseau de Commandement a été détruit!</br>";
         commandementComputerCounter = 10;
 
-
+        // vérification simple pour la victoire du joueur
     } if (corvetteCounter + fregateCounter + navetteCounter + croiseurCounter + commandementCounter == 50) {
         chatBox.innerHTML += "Vous avez gagné!</br>";
         gameOver(true);
     }
 
+    // vérifications pour la victoire de l'ordinateur en fonction de la difficulté, et donc des vaisseaux du joueur
     if (playerDifficulty.value == "Facile") {
         if (fregateComputerCounter + navetteComputerCounter + cuirasseComputerCounter + croiseurComputerCounter + cargoComputerCounter + commandementComputerCounter == 60) {
             chatBox.innerHTML += "Votre adversaire a gagné!</br>";
@@ -758,35 +761,44 @@ function winConditions() {
 // Fonction qui se lance quand la partie est gagné par le joueur ou l'ordinateur, et appelle la page de scores
 function gameOver(status) {
     gameOverStatus = true;
-    containerGameGrid.classList.add('hidden');
-    scoreTab.classList.remove('hidden');
+    
+    
 
     if (status == true) {
+        containerGameGrid.classList.add('hidden');
+        scoreTab.classList.remove('hidden');
         loadItemsFromStorage();
         saveItemsInStorage();
     } else if (status == false) {
-        // quelque chose pour annoncer la défaite?
+        containerGameGrid.classList.add('hidden');
+        gameOverTab.classList.remove('hidden');
+
+        gameOverTab.innerHTML = "<p>Vous avez perdu! C'est dommage, essayez une prochaine fois!</p>"
     }
 }
 
 // Fonction qui sauvegarde le score du joueur dans le localstorage de Sandrine
 function saveItemsInStorage() {
 
+    // on récupère la date du jour
     let newDate = new Date();
     let newDateGood = newDate.toLocaleDateString();
 
+    // nouvel item qui contiendra les informations du score
     let scoreItem = {
         id: scoreCounter,
         score: playerScore,
         text: "Gagné en " + playerScore + " coups le " + newDateGood
     };
 
+    // on ajoute le score à notre liste, et on la garde dans le localstorage
     scoreList.push(scoreItem);
     localStorage.setItem("score-items", JSON.stringify(scoreList));
 
     scoreCounter++;
     localStorage.setItem('counter', scoreCounter);
 
+        // on affiche notre liste de score actuelle
         for (x = 0; x < scoreList.length; x++) {
             let newItem = document.createElement('div');
             newItem.classList.add('score');
@@ -794,17 +806,16 @@ function saveItemsInStorage() {
             newItem.innerText = scoreList[x].text;
 
             scoreTab.appendChild(newItem);
-        }
-
-        //scoreCounter = +localStorage.getItem('counter');
-    
+        }  
 }
 
 // Fonction qui charge les scores du joueur et les met à jour
 function loadItemsFromStorage() {
 
+    // vérification initiale, en cas de localstorage vide
     if (scoreList.length != 0) {
 
+    // récuparation des scores et du counter, pour les utiliser ensuite
     const storageScores = localStorage.getItem("score-items");
     scoreList = JSON.parse(storageScores);
     scoreCounter = +localStorage.getItem('counter');
@@ -876,6 +887,8 @@ function changecolor(color) {
     chatBox.classList.add('border' + color);
     turnBox.classList.remove('borderPink', 'borderRed', 'borderPurple', 'borderOrange', 'borderBlue', 'borderGreen');
     turnBox.classList.add('border' + color);
+    gameOverTab.classList.remove('borderPink', 'borderRed', 'borderPurple', 'borderOrange', 'borderBlue', 'borderGreen');
+    gameOverTab.classList.add('border' + color);
 }
 
 // Easters Eggs.... Et... PONEYS!!!

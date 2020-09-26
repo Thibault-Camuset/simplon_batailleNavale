@@ -9,12 +9,10 @@ body {
     color:#00ff00;
 }
 
-h1 {
-    margin-top:-5vh;
-    font-size: 2.7vw;
-    text-shadow: 3px 3px 4px black;
-    text-align:center;
-}
+
+
+
+
 
 /* Affichage principal, qui sera caché et visible au fur et à mesure des étapes */
 #containerAccueil, #containerDifficulty, #containerGameGrid, #score-tab {
@@ -29,6 +27,12 @@ h1 {
     text-align:center;
     font-size:2.7vh;
 }
+
+
+
+
+
+
 
 /* Placement des images des planètes sur le fonc, qui seront utilisées pour certaines actions */
 .imgPlanet {
@@ -106,6 +110,9 @@ h1 {
     right:35vw; 
 }
 
+
+
+
 /* Page d'accueil, logo, input pour le pseudo, et premier bouton de validation */
 /*#gameLogo {
     position:relative;
@@ -114,6 +121,16 @@ h1 {
     width:150px;
     height:150px;
 }*/
+
+
+
+/* Input de la première page + boutons redondants */
+h1 {
+    margin-top:-5vh;
+    font-size: 2.7vw;
+    text-shadow: 3px 3px 4px black;
+    text-align:center;
+}
 
 #inputPseudo {
     margin-top:1vh;
@@ -155,11 +172,19 @@ h1 {
 
 #inputValider:hover, #inputValiderDifficulty:hover, #shipPlacement:hover, #playInput:hover {
     background-color:black;
-    /* color:#00ff00; */
     color: #00FF00 ;
     border: 3px solid #00FF00 ;
 }
 
+
+
+
+
+
+
+
+
+/* Partie relative à la séléction des thèmes de couleurs */
 .colorGreen {
     background-color:#00ff00 !important;
     color:black !important;
@@ -257,7 +282,6 @@ h1 {
     border: 3px solid #fd6c9e !important;
 }
 
-
 #themeColorSelect {
     display: flex;
     flex-direction:row;
@@ -315,6 +339,16 @@ h1 {
     border: 1px solid #fd6c9e !important;
 }
 
+
+
+
+
+
+
+
+
+
+
 /* Deuxième "page" avec options du jeu, liste déroulantes, choix du mode de jeu, et deuxième 
 bouton de validation */
 #welcome {
@@ -362,8 +396,6 @@ bouton de validation */
     background-position-y: center;
 }
 
-
-
 #labelPlayerMode {
     margin-bottom:1vh;
     font-size: 1vw;
@@ -405,6 +437,15 @@ bouton de validation */
     width:7vw;
     height:15vh;  
 }*/
+
+
+
+
+
+
+
+
+
 
 /* Définition de la troisième page, celle du jeu, et gestion des deux grilles du joueur et
 de l'ordinateur */
@@ -460,8 +501,9 @@ de l'ordinateur */
     background-color:black;
 }
 
+
 /* Div contenant les vaisseaux du joueur à placer */
-#shipPlaceBox, #shipPlaceBoxEasy, #shipPlaceBoxNormal, #shipPlaceBoxHard  {
+#shipPlaceBox {
     position:fixed;
     width:30vh;
     height:48vh;
@@ -476,6 +518,11 @@ de l'ordinateur */
     left: 4.5vw;
 }
 
+
+
+
+
+/* Boites de chat contenant les messages informatifs */
 #chat-container {
     width:57vw;
     height:27vh;
@@ -506,6 +553,16 @@ de l'ordinateur */
 
 
 
+
+
+
+
+
+
+
+
+
+/* Classes des vaisseaux pour l'apparence ET pour le placement du joueur */
 .Corvette {
     background-color: orange;
 }
@@ -597,12 +654,11 @@ de l'ordinateur */
     flex-direction: column !important;
 }
 
-#ponyJoke {
-    position:fixed;
-    top:30vh;
-    left:40vw;
-}
 
+
+
+
+/* Table des scores et message de gameOver */
 #score-tab {
     height:75vh;
     width:75vw;
@@ -615,6 +671,33 @@ de l'ordinateur */
     overflow:scroll;
     border:3px solid #00FF00;
 }
+
+#game-over-tab {
+    height:15vh;
+    width:25vw;
+    position:fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color:black;
+    padding:3vh;
+    text-align:center;
+    border:3px solid #00FF00;
+    font-size:1.2vw;
+
+}
+
+
+
+
+/* Blagues et autres */
+#ponyJoke {
+    position:fixed;
+    top:30vh;
+    left:40vw;
+}
+
+
 
 /* Classe hidden utilisée sur toutes les pages pour afficher/cacher les éléments */
 .hidden {
