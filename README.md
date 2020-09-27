@@ -7,7 +7,7 @@
 *Petit projet de site, contenant un jeu de type "Bataille Navale" fonctionnel et jouable, codé en Javascript natif.*
 
 
-- Version en ligne: http://developer-road.com/Bataille-Spatiale/index.html
+- Version en ligne: http://developer-road.com/Bataille-Spatiale
 
 
 - Wireframe: https://www.figma.com/file/7NKonvAiWMsQG1TrhFAmFA/Wireframe
