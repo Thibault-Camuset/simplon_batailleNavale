@@ -47,6 +47,6 @@ Il faut uniquement veiller à ce que les scripts/le javascript ne soit pas désa
 ---
 
 <img src="https://www.developer-road.com/Bataille-Spatiale/IMG/tutorial1.jpg" width="49%" align="left">
-<p align="center" vertical-align="middle">Page d'accueil, vous pouvez entrer votre Pseudo ici, et cliquer sur le bouton pour passer à la prochaine étape!</p>
+<p align="center" vertical-align="center">Page d'accueil, vous pouvez entrer votre Pseudo ici, et cliquer sur le bouton pour passer à la prochaine étape!</p>
 
 
