@@ -334,7 +334,7 @@ function randomPlacement(ship_size, ship_name) {
         //if there's no ship in the way of the new ship, places the new one by adding the ship class to two or more (depending on the ship's lenght) consecutive horizontal squares 
         if (checkShipPresence(random_id,ship_size,1)) {
             for (var i = 0; i < ship_size; i++) {
-                document.getElementById(random_id+i).classList.add('ship', ship_name, 'spot-hidden');
+                document.getElementById(random_id+i).classList.add('spotTaken', ship_name, 'spotHidden');
             }
             return true;
 
@@ -354,7 +354,7 @@ function randomPlacement(ship_size, ship_name) {
         //if there's no ship in the way of the new ship, places the new one by adding the ship class to two or more (depending on the ship's lenght) consecutive vertical squares
         if (checkShipPresence(random_id,ship_size,gridWidth)) {
             for (var i = 0; i < ship_size; i++) {
-                document.getElementById(random_id+i*gridWidth).classList.add('ship', ship_name, 'spot-hidden');
+                document.getElementById(random_id+i*gridWidth).classList.add('spotTaken', ship_name, 'spotHidden');
             }
             return true;
 
@@ -368,7 +368,7 @@ function randomPlacement(ship_size, ship_name) {
 //checks if there is already a ship where we want to place a new one
 function checkShipPresence(random_id,ship_size,next_square_multiplicator) {
         var i=0;
-        while (i < ship_size && !document.getElementById(random_id+i*next_square_multiplicator).classList.contains('ship')){
+        while (i < ship_size && !document.getElementById(random_id+i*next_square_multiplicator).classList.contains('spotTaken')){
             i++;
         }
         if (i == ship_size) {
@@ -376,10 +376,6 @@ function checkShipPresence(random_id,ship_size,next_square_multiplicator) {
         }
         return false;
 }
-
-
-
-
 
 
 // // Définition des différent type de vaisseaux, noms/classes et leur longueurs (deux types de placements), pour le random de l'ordinateur
@@ -795,6 +791,8 @@ function computerPointsCount(index) {
         commandementComputerCounter++;
     }
 }
+
+var speed = 50;
 
 // Fonction qui vérifie les conditions de victoire, et appelle si nécessaire le game over
 function winConditions() {
