@@ -631,19 +631,19 @@ function computerTurn() {
         // })
 
         // vérifie pour chaque case à toucher dans le tableau si elle n'a pas déjà été touchée
-        for (i = 0; i < newPossibleComputerHits.length; i++) {
+        // for (i = 0; i < newPossibleComputerHits.length; i++) {
 
-            if (newPossibleComputerHits[i].classList.contains('spotMiss')) {
-                tabsup = newPossibleComputerHits.splice(i, 1);
-                i--;
-            }
-            else if (newPossibleComputerHits[i].classList.contains('spotHit')) {
-                tabsup = newPossibleComputerHits.splice(i, 1);
-                i--;
-            }
+        //     if (newPossibleComputerHits[i].classList.contains('spotMiss')) {
+        //         tabsup = newPossibleComputerHits.splice(i, 1);
+        //         i--;
+        //     }
+        //     else if (newPossibleComputerHits[i].classList.contains('spotHit')) {
+        //         tabsup = newPossibleComputerHits.splice(i, 1);
+        //         i--;
+        //     }
 
 
-        }
+        // }
 
         // si les cases à toucher sont vides, alors l'ordinateur n'est plus en chasse, et retourne en mode random.
         if (newPossibleComputerHits.length == 0) {
