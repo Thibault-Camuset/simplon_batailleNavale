@@ -44,5 +44,9 @@ _Aucune procédure n'est nécessaire pour faire fonctionner ce site, et jouer au
 Il faut uniquement veiller à ce que les scripts/le javascript ne soit pas désactivés sur le navigateur utilisé._
 
 
+---
+
+<img src="developer-road.com/IMG/tutorial1.jpg" width="49%" align="left">
+<p align="right">Some Text</p>
 
 
