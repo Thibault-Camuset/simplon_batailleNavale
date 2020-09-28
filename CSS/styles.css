@@ -7,6 +7,8 @@ body {
     margin:0;
     padding:0;
     color:#00ff00;
+    width:100%;
+    height:100%;
 }
 
 
@@ -19,13 +21,13 @@ body {
     position: relative;
     display: flex;
     flex-direction: column;
-    top:30vh;
+    top:30%;
     margin-left:auto;
     margin-right:auto;
-    width:20vw;
+    width:20%;
     font-weight: bold;
     text-align:center;
-    font-size:2.7vh;
+    font-size:2.7vw;
 }
 
 
@@ -37,77 +39,77 @@ body {
 /* Placement des images des planètes sur le fonc, qui seront utilisées pour certaines actions */
 .imgPlanet {
     position:fixed;
-    width:8vw;
-    height:8vw;
+    width:8%;
+    height:16%;
 }
 
 #imgMercure {
-    top:5vh;
-    right:10vw;
+    top:5%;
+    right:10%;
 }
 
 #imgVenus {
-    bottom:15vh;
-    right:25vw;
+    bottom:15%;
+    right:25%;
 }
 
 #imgJupiters {
-    bottom:10vh;
-    left:10vw;
+    bottom:10%;
+    left:10%;
 }
 
 #imgMars {
-    top:30vh;
-    left:15vw;
+    top:30%;
+    left:15%;
 }
 
 #imgTerre {
-    top:3vh;
-    left:45vw;
+    top:3%;
+    left:45%;
 }
 
 #imgSaturne {
-    bottom:3vh;
-    left:35vw;
-    width:13vw;
-    height:13vw;
+    bottom:3%;
+    left:35%;
+    width:13%;
+    height:26%;
 }
 
 #imgLune {
-    top:4vh;
-    left:53vw;
-    width:2vw;
-    height:2vw;
+    top:4%;
+    left:53%;
+    width:2%;
+    height:4%;
 }
 
 #imgNeptune {
-    top:35vh;
-    right:27vw;
-    width:4vw;
-    height:4vw;
+    top:35%;
+    right:27%;
+    width:4%;
+    height:8%;
 }
 
 #imgUranus {
-    height:5vw;
-    width:5vw;
+    height:10%;
+    width:5%;
 }
 
 .uranusPos1 {
     position: fixed;
-    top:50vh;
-    right:3vw; 
+    top:50%;
+    right:3%; 
 }
 
 .uranusPos2 {
     position: fixed;
-    top:3vh;
-    right:75vw; 
+    top:3%;
+    right:75%; 
 }
 
 .uranusPos3 {
     position: fixed;
-    top:85vh;
-    right:35vw; 
+    top:85%;
+    right:35%; 
 }
 
 
@@ -126,21 +128,21 @@ body {
 
 /* Input de la première page + boutons redondants */
 h1 {
-    margin-top:-5vh;
+    margin-top:-5%;
     font-size: 2.7vw;
     text-shadow: 3px 3px 4px black;
     text-align:center;
 }
 
 #inputPseudo {
-    margin-top:1vh;
-    margin-bottom:3vh;
+    margin-top:2%;
+    margin-bottom:6%;
     margin-left:auto;
     margin-right:auto;
     border: 3px solid #00ff00;
     border-radius:50px;
-    width: 18vw;
-    height:6vh;
+    width: 75%;
+    padding:3%;
     text-align:center;
     font-weight:bold;
     background-color:black;
@@ -148,11 +150,7 @@ h1 {
     font-size:1vw;
 }
 
-#playInput {
-    position: fixed;
-    bottom:65vh;
-    left:48.5vw;
-}
+
 
 #inputPseudo:focus::placeholder {
     color:transparent;
@@ -164,8 +162,8 @@ h1 {
     border: 3px solid black;
     background-color:#00ff00;
     border-radius: 30px;
-    width: 10vw;
-    height:5vh;
+    width: 40%;
+    padding:2%;
     font-weight:bold;
     font-size:0.9vw;
 }
@@ -352,13 +350,13 @@ h1 {
 /* Deuxième "page" avec options du jeu, liste déroulantes, choix du mode de jeu, et deuxième 
 bouton de validation */
 #welcome {
-    margin-bottom:5vh;
+    margin-bottom:8%;
     font-size:1.7vw;
     text-shadow: 3px 3px 4px black;
 }
 
 #playerMode {
-    margin-top:3vh;
+    margin-top:6%;
 }
 
 #playerMode1Label {
@@ -373,14 +371,14 @@ bouton de validation */
     display:inline-block;
 }
 #labelPlayerDifficulty {
-    margin-top:5vh;
+    margin-top:8%;
     font-size: 1vw;
     line-height:3vh;
 }
 
 #playerDifficulty {
-    margin-top:3vh;
-    height:3.5vh;
+    margin-top:6%;
+    padding:1%;
     background-color: black;
     border:2px solid #00FF00;
     color: #00FF00;
@@ -397,16 +395,16 @@ bouton de validation */
 }
 
 #labelPlayerMode {
-    margin-bottom:1vh;
+    margin-bottom:2%;
     font-size: 1vw;
 }
 
 #playerDifficulty {
-    margin-bottom:3vh;
+    margin-bottom:5%;
 }
 
 #inputValiderDifficulty {
-    margin-top: 3vh;
+    margin-top: 5%;
 }
 
 #computerDifficultyBox {
@@ -415,11 +413,11 @@ bouton de validation */
 }
 
 #labelComputerDifficulty {
-    margin-bottom:3vh;
+    margin-bottom:5%;
 }
 
 #containerDifficulty {
-    top:20vh;
+    top:20%;
 }
 
 /* Partie sur le côté pour afficher l'avatar et le pseudo du joueur */
@@ -450,9 +448,9 @@ bouton de validation */
 /* Définition de la troisième page, celle du jeu, et gestion des deux grilles du joueur et
 de l'ordinateur */
 #containerGameGrid {
-    width: 95vw;
-    height: 95vh;
-    top: 5vh;
+    width: 95%;
+    height: 95%;
+    top: 5%;
 }
 
 .grid {
@@ -486,14 +484,14 @@ de l'ordinateur */
 
 #playerGrid {
     position:fixed;
-    top:5vh;
-    left:20vw;
+    top:5%;
+    left:20%;
 }
 
 #computerGrid, #player2Grid {
     position:fixed;
-    top:5vh;
-    right:20vw;
+    top:5%;
+    right:20%;
     background-color: black;
 }
 
@@ -505,30 +503,40 @@ de l'ordinateur */
 /* Div contenant les vaisseaux du joueur à placer */
 #shipPlaceBox {
     position:fixed;
-    width:30vh;
-    height:48vh;
-    top:5vh;
-    left:3vw;
+    width:15%;
+    height:48%;
+    top:5%;
+    left:3%;
     background-color: transparent;
 }
 
 #shipPlacement {
     position: fixed;
-    top: 55vh;
-    left: 4.5vw;
+    top:55%;
+    left:4.5%;
+    width:8%;
+    height:5%;
+    padding:0;
 }
 
-
+#playInput {
+    position: fixed;
+    bottom:65%;
+    left:48.5%;
+    width:8%;
+    height:5%;
+    padding:0;
+}
 
 
 
 /* Boites de chat contenant les messages informatifs */
 #chat-container {
-    width:57vw;
-    height:27vh;
+    width:57%;
+    height:27%;
     position:absolute;
-    bottom:5vh;
-    left:22.5vw;
+    bottom:10%;
+    left:25%;
     background-color:black;
 }
 
