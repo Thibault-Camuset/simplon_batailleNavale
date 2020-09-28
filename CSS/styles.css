@@ -680,6 +680,10 @@ de l'ordinateur */
     border:3px solid #00FF00;
 }
 
+.score {
+    font-size:1.4vw
+}
+
 #game-over-tab {
     height:15vh;
     width:25vw;
