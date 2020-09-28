@@ -45,6 +45,8 @@ Il faut uniquement veiller à ce que les scripts/le javascript ne soit pas désa
 
 
 ---
+### Comment jouer?
+---
 
 <p align="center"><img src="https://www.developer-road.com/Bataille-Spatiale/IMG/tutorial1.jpg" width="50%" align="center"></p>
 <p align="center">Page d'accueil, vous pouvez entrer votre Pseudo ici, et cliquer sur le bouton pour passer à la prochaine étape!</p>
