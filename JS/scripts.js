@@ -124,19 +124,19 @@ inputValiderDifficulty.addEventListener('click', () => {
         // Crée les vaisseaux du joueur. La difficulté peut être implantée ici.
         //spawnPlayerShips ();
 
-        // Détermine quels vaisseaux de la liste des vaisseaux disponibles sont affichés pour l'ordinateur
-        // il est donc possible de moduler en fonction de la difficulté ici.
-        randomComputerShip(shipTypes[0]);
-        randomComputerShip(shipTypes[1]);
-        randomComputerShip(shipTypes[2]);
-        randomComputerShip(shipTypes[3]);
-        randomComputerShip(shipTypes[4]);
-
+        //calls the randomPlacement function for each ship in the all_ships array, taking account of its lenght and name
+        var i = 0
+        while(i < computerShips.length){
+            if (randomPlacement(computerShips[i].size, computerShips[i].name)) {
+                i++;
+            }
+        }
         // Appel de la fonction qui attribue les vaisseaux au joueur en fonction de la difficultée choisie
         displayPlayerShips()
 
         // Mode deux joueurs. A rendre "indisponible" si pas le temps, sinon, les fonctions
         // pour faire fonctionner ce mode seront ici!
+
     }
 
 
@@ -159,6 +159,7 @@ function generateGrid(grid, array, index) {
     for (i = index; i < index + (gridWidth * gridWidth); i++) {
         let spot = document.createElement('div');
         spot.dataset.id = i;
+        spot.id = i;
         spot.classList.add('gridBox');
         if (document.body.style.color == "rgb(0, 255, 0)") {
             spot.classList.add('gridGreen');
@@ -284,77 +285,174 @@ function drawPlayerShips(list) {
     }
 }
 
-// Définition des différent type de vaisseaux, noms/classes et leur longueurs (deux types de placements), pour le random de l'ordinateur
-let shipTypes = [
+let computerShips = [
+
     {
         name: 'Corvette',
-        directions: [
-            [0, 1],
-            [0, gridWidth]
-        ]
+        size: 2
     },
     {
         name: 'Fregate',
-        directions: [
-            [0, 1, 2],
-            [0, gridWidth, gridWidth * 2]
-        ]
+        size: 3
     },
     {
         name: 'Navette',
-        directions: [
-            [0, 1, 2],
-            [0, gridWidth, gridWidth * 2]
-        ]
+        size: 3
     },
+    // {
+    //     name: 'Cuirasse',
+    //     size: 3
+    // },
     {
         name: 'Croiseur',
-        directions: [
-            [0, 1, 2, 3],
-            [0, gridWidth, gridWidth * 2, gridWidth * 3]
-        ]
+        size: 4
     },
+    // {
+    //     name: 'Cargo',
+    //     size: 4
+    // },
     {
         name: 'Vaisseau_de_Commandement',
-        directions: [
-            [0, 1, 2, 3, 4],
-            [0, gridWidth, gridWidth * 2, gridWidth * 3, gridWidth * 4]
-        ]
+        size: 5
     },
-]
+];
 
-// Randomnisation des vaisseaux de l'ordinateur (éventuellement bouton pour le joueur?)
-function randomComputerShip(ship) {
+//places a ship randomly on the computer grid
+function randomPlacement(ship_size, ship_name) {
 
-    // Définition d'un sens de placement, vertical ou horizontal, aléatoirement 
-    let randomVerticalOrHorizontal = Math.floor(Math.random() * ship.directions.length);
-    let actualDirection = ship.directions[randomVerticalOrHorizontal];
+    var ship_direction = Math.round(Math.random()); //returns either 0 or 1, determines if the ship is horizontal (0) or vertical (1)
 
-    if (randomVerticalOrHorizontal === 0) {
-        direction = 1;
-    } else if (randomVerticalOrHorizontal === 1) {
-        direction = 10;
+
+    //parameters for an horizontal ship
+    if (ship_direction==0) {
+
+        //randomly determines the first square that the ship will potentially occupy
+        var x = Math.floor(Math.random()*(gridWidth-(ship_size-1)));
+        var y = Math.floor(Math.random()*(gridWidth));
+        var random_id = y*gridWidth+x+200;
+
+        //if there's no ship in the way of the new ship, places the new one by adding the ship class to two or more (depending on the ship's lenght) consecutive horizontal squares 
+        if (checkShipPresence(random_id,ship_size,1)) {
+            for (var i = 0; i < ship_size; i++) {
+                document.getElementById(random_id+i).classList.add('ship', ship_name, 'spot-hidden');
+            }
+            return true;
+
+        } else {
+            return false;
+        }
     }
 
-    // Détermine une case de "départ" pour le positionnement du vaisseau.
-    let placementStart = Math.abs(Math.floor(Math.random() * computerSpots.length - (ship.directions[0].length * direction)));
+    //parameters for a vertical ship
+    else {
 
-    // Vérification que la case n'est pas déjà occupée par un autre vaisseau et est bien vide
-    let alreadyTakken = actualDirection.some(index => computerSpots[placementStart + index].classList.contains('spotTaken'));
+        //randomly determines the first square that the ship will potentially occupy
+        var x = Math.floor(Math.random()*gridWidth);
+        var y = Math.floor(Math.random()*(gridWidth-(ship_size-1)));
+        var random_id = y*gridWidth+x+200;
 
-    // Vérification que l'on ne se trouve pas sur les bords de l'écran, pour ne pas que les vaisseaux
-    // "débordent" lors de leur placement.
-    let rightBorder = actualDirection.some(index => (placementStart + index) % gridWidth === gridWidth - 1);
-    let leftBorder = actualDirection.some(index => (placementStart + index) % gridWidth === 0);
+        //if there's no ship in the way of the new ship, places the new one by adding the ship class to two or more (depending on the ship's lenght) consecutive vertical squares
+        if (checkShipPresence(random_id,ship_size,gridWidth)) {
+            for (var i = 0; i < ship_size; i++) {
+                document.getElementById(random_id+i*gridWidth).classList.add('ship', ship_name, 'spot-hidden');
+            }
+            return true;
 
-    // Si les conditions (case vide, et DANS la grille) sont respectées, alors, un vaisseau est placé
-    // SINON, la fonction se relance jusqu'à que cela soit le cas et que tous les vaiseaux le soient
-    if (!alreadyTakken && !rightBorder && !leftBorder) {
-        actualDirection.forEach(index => computerSpots[placementStart + index].classList.add('spotTaken', 'spotHidden', ship.name));
-    } else {
-        randomComputerShip(ship);
+        } else {
+            return false;
+        }
     }
 }
+    
+
+//checks if there is already a ship where we want to place a new one
+function checkShipPresence(random_id,ship_size,next_square_multiplicator) {
+        var i=0;
+        while (i < ship_size && !document.getElementById(random_id+i*next_square_multiplicator).classList.contains('ship')){
+            i++;
+        }
+        if (i == ship_size) {
+            return true;
+        }
+        return false;
+}
+
+
+
+
+
+
+// // Définition des différent type de vaisseaux, noms/classes et leur longueurs (deux types de placements), pour le random de l'ordinateur
+// let shipTypes = [
+//     {
+//         name: 'Corvette',
+//         directions: [
+//             [0, 1],
+//             [0, gridWidth]
+//         ]
+//     },
+//     {
+//         name: 'Fregate',
+//         directions: [
+//             [0, 1, 2],
+//             [0, gridWidth, gridWidth * 2]
+//         ]
+//     },
+//     {
+//         name: 'Navette',
+//         directions: [
+//             [0, 1, 2],
+//             [0, gridWidth, gridWidth * 2]
+//         ]
+//     },
+//     {
+//         name: 'Croiseur',
+//         directions: [
+//             [0, 1, 2, 3],
+//             [0, gridWidth, gridWidth * 2, gridWidth * 3]
+//         ]
+//     },
+//     {
+//         name: 'Vaisseau_de_Commandement',
+//         directions: [
+//             [0, 1, 2, 3, 4],
+//             [0, gridWidth, gridWidth * 2, gridWidth * 3, gridWidth * 4]
+//         ]
+//     },
+// ]
+
+// // Randomnisation des vaisseaux de l'ordinateur (éventuellement bouton pour le joueur?)
+// function randomComputerShip(ship) {
+
+//     // Définition d'un sens de placement, vertical ou horizontal, aléatoirement 
+//     let randomVerticalOrHorizontal = Math.floor(Math.random() * ship.directions.length);
+//     let actualDirection = ship.directions[randomVerticalOrHorizontal];
+
+//     if (randomVerticalOrHorizontal === 0) {
+//         direction = 1;
+//     } else if (randomVerticalOrHorizontal === 1) {
+//         direction = 10;
+//     }
+
+//     // Détermine une case de "départ" pour le positionnement du vaisseau.
+//     let placementStart = Math.abs(Math.floor(Math.random() * computerSpots.length - (ship.directions[0].length * direction)));
+
+//     // Vérification que la case n'est pas déjà occupée par un autre vaisseau et est bien vide
+//     let alreadyTakken = actualDirection.some(index => computerSpots[placementStart + index].classList.contains('spotTaken'));
+
+//     // Vérification que l'on ne se trouve pas sur les bords de l'écran, pour ne pas que les vaisseaux
+//     // "débordent" lors de leur placement.
+//     let rightBorder = actualDirection.some(index => (placementStart + index) % gridWidth === gridWidth - 1);
+//     let leftBorder = actualDirection.some(index => (placementStart + index) % gridWidth === 0);
+
+//     // Si les conditions (case vide, et DANS la grille) sont respectées, alors, un vaisseau est placé
+//     // SINON, la fonction se relance jusqu'à que cela soit le cas et que tous les vaiseaux le soient
+//     if (!alreadyTakken && !rightBorder && !leftBorder) {
+//         actualDirection.forEach(index => computerSpots[placementStart + index].classList.add('spotTaken', 'spotHidden', ship.name));
+//     } else {
+//         randomComputerShip(ship);
+//     }
+// }
 
 // Fonction pour faire pivoter les vaisseaux à placer par le joueur.
 function rotation() {
