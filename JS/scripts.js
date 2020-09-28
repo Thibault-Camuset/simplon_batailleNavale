@@ -796,7 +796,7 @@ var speed = 50;
 
 // Fonction qui vérifie les conditions de victoire, et appelle si nécessaire le game over
 function winConditions() {
-    console.log('currentHuntSpot :'+currentHuntSpots.length);
+
     // Partie qui compte le score du joueur
     if (corvetteCounter == 2) {
         chatBox.innerHTML += "Vous avez détruit la Corvette de votre adversaire!</br>";
@@ -870,9 +870,10 @@ function winConditions() {
         }
 
     }
-    console.log('currentHuntSpot after :'+currentHuntSpots.length);
-}
 
+}
+console.log('score list outside');
+console.log(scoreList);
 // Fonction qui se lance quand la partie est gagné par le joueur ou l'ordinateur, et appelle la page de scores
 function gameOver(status) {
     gameOverStatus = true;
@@ -883,7 +884,7 @@ function gameOver(status) {
         containerGameGrid.classList.add('hidden');
         scoreTab.classList.remove('hidden');
         loadItemsFromStorage();
-        saveItemsInStorage();
+        
 
     // Le status false ici rapporte une défaite et donc n'affiche pas les scores, mais un message de défaite    
     } else if (status == false) {
@@ -899,7 +900,8 @@ function saveItemsInStorage() {
     // on récupère la date du jour
     let newDate = new Date();
     let newDateGood = newDate.toLocaleDateString();
-
+    console.log("scoreList in save");
+    console.log(scoreList);
     // nouvel item qui contiendra les informations du score
     let scoreItem = {
         id: scoreCounter,
@@ -913,6 +915,8 @@ function saveItemsInStorage() {
     scoreCounter++;
     localStorage.setItem('counter', scoreCounter);
 
+    console.log("scoreList after save");
+    console.log(scoreList);
         // on affiche notre liste de score actuelle
         for (x = 0; x < scoreList.length; x++) {
             let newItem = document.createElement('div');
@@ -920,24 +924,31 @@ function saveItemsInStorage() {
             newItem.id = scoreList[x].id;
             newItem.innerText = scoreList[x].text;
             scoreTab.appendChild(newItem);
-        }  
+        }
+        scoreList = [];  
 }
 
 // Fonction qui charge les scores du joueur et les met à jour
 function loadItemsFromStorage() {
-
+    scoreList = [];
+    console.log("scoreList in load");
+    console.log(scoreList);
     // vérification initiale, en cas de localstorage vide
-    if (scoreList.length != 0) {
+    
 
     // récuparation des scores et du counter, pour les utiliser ensuite
     const storageScores = localStorage.getItem("score-items");
     scoreList = JSON.parse(storageScores);
     scoreCounter = localStorage.getItem('counter');
-    }
+    
+    
 
+    console.log("scoreList end of load");
+    console.log(scoreList);
     if (CLEAR_LOCAL_STORAGE) {
         localStorage.clear();
     }
+    saveItemsInStorage();
 }
 
 // Ecouteur de base qui lance le jeu quand on clique sur "jouer", et ajoute les écouteurs sur les spots de l'ordinateur a ce moment
