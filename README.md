@@ -1,3 +1,5 @@
+<img src="https://repository-images.githubusercontent.com/294061858/a3fc3a80-00bc-11eb-828f-db9f52acaf62"/>
+
 ## Projet réalisé au cours de la formation Simplon.co de développeur Web et Web Mobile, par :
 
 - [Mathilde Migne](https://github.com/Mathildemgn), 
