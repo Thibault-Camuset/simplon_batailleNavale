@@ -46,7 +46,20 @@ Il faut uniquement veiller à ce que les scripts/le javascript ne soit pas désa
 
 ---
 
-<img src="https://www.developer-road.com/Bataille-Spatiale/IMG/tutorial1.jpg" width="49%" align="left">
-<p align="center" justify-content="space-around">Page d'accueil, vous pouvez entrer votre Pseudo ici, et cliquer sur le bouton pour passer à la prochaine étape!</p>
+<p align="center"><img src="https://www.developer-road.com/Bataille-Spatiale/IMG/tutorial1.jpg" width="50%" align="center"></p>
+<p align="center">Page d'accueil, vous pouvez entrer votre Pseudo ici, et cliquer sur le bouton pour passer à la prochaine étape!</p>
 
+---
 
+<p align="center"><img src="https://www.developer-road.com/Bataille-Spatiale/IMG/tutorial2.jpg" width="50%" align="center"></p>
+<p align="center">Sélection du mode de difficulté, qui va définir combien de vaisseau le joueur pourra placer!</p>
+
+---
+
+<p align="center"><img src="https://www.developer-road.com/Bataille-Spatiale/IMG/tutorial3.jpg" width="50%" align="center"></p>
+<p align="center">Il est temps de placer les vaisseaux du joueur! Déplacez les uns à uns sur la grille à l'endroit désiré. Il est possible de changer leur sens avant de les placer en cliquant sur le bouton!</p>
+
+---
+
+<p align="center"><img src="https://www.developer-road.com/Bataille-Spatiale/IMG/tutorial4.jpg" width="50%" align="center"></p>
+<p align="center">Enfin, après avoir placé tous les vaisseaux, et cliqué sur le bouton "Jouer", la partie se déroulera tour par tour, et se soldera par une victoire... ou une défaite! Bonne chance!</p>
