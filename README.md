@@ -46,7 +46,7 @@ Il faut uniquement veiller à ce que les scripts/le javascript ne soit pas désa
 
 ---
 
-<img src="developer-road.com/IMG/tutorial1.jpg" width="49%" align="left">
+<img src="https://www.developer-road.com/Bataille-Spatiale/IMG/tutorial1.jpg" width="49%" align="left">
 <p align="right">Some Text</p>
 
 
