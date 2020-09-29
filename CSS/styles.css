@@ -40,7 +40,7 @@ body {
 .imgPlanet {
     position:fixed;
     width:8%;
-    height:16%;
+    /*height:16%;*/
 }
 
 #imgMercure {
@@ -72,26 +72,26 @@ body {
     bottom:3%;
     left:35%;
     width:13%;
-    height:26%;
+   /* height:26%;*/
 }
 
 #imgLune {
     top:4%;
     left:53%;
     width:2%;
-    height:4%;
-}
+/*    height:4%;
+*/}
 
 #imgNeptune {
     top:35%;
     right:27%;
     width:4%;
-    height:8%;
-}
+/*    height:8%;
+*/}
 
 #imgUranus {
-    height:10%;
-    width:5%;
+/*    height:10%;
+*/    width:5%;
 }
 
 .uranusPos1 {
