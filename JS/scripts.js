@@ -53,6 +53,7 @@ turnBox.innerHTML = "";
 
 
 
+
 // Tableau qui contiendront l'état des grilles de chaque "joueur"
 let playerSpots = [];
 let computerSpots = [];
@@ -67,6 +68,7 @@ let currentHuntSpots = [];
 let gridWidth = 10;
 const CLEAR_LOCAL_STORAGE = false;
 let scoreCounter = 0;
+
 
 // Par défaut, aucun des deux modes de jeu ne sera sélectionné.
 playerMode1.checked = true;
@@ -901,8 +903,7 @@ function saveItemsInStorage() {
     // on récupère la date du jour
     let newDate = new Date();
     let newDateGood = newDate.toLocaleDateString();
-    console.log("scoreList in save");
-    console.log(scoreList);
+    
     // nouvel item qui contiendra les informations du score
     let scoreItem = {
         id: scoreCounter,
@@ -916,8 +917,7 @@ function saveItemsInStorage() {
     scoreCounter++;
     localStorage.setItem('counter', scoreCounter);
 
-    console.log("scoreList after save");
-    console.log(scoreList);
+    
         // on affiche notre liste de score actuelle
         for (x = 0; x < scoreList.length; x++) {
             let newItem = document.createElement('div');
@@ -932,20 +932,19 @@ function saveItemsInStorage() {
 // Fonction qui charge les scores du joueur et les met à jour
 function loadItemsFromStorage() {
     scoreList = [];
-    console.log("scoreList in load");
-    console.log(scoreList);
-    // vérification initiale, en cas de localstorage vide
     
-
     // récuparation des scores et du counter, pour les utiliser ensuite
     const storageScores = localStorage.getItem("score-items");
+    console.log(localStorage.getItem("score-items"));
+
+    if (storageScores != null) {
     scoreList = JSON.parse(storageScores);
     scoreCounter = localStorage.getItem('counter');
+    }
     
     
 
-    console.log("scoreList end of load");
-    console.log(scoreList);
+    
     if (CLEAR_LOCAL_STORAGE) {
         localStorage.clear();
     }
