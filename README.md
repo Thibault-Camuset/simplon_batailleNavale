@@ -67,4 +67,4 @@ Il faut uniquement veiller à ce que les scripts/le javascript ne soit pas désa
 <p align="center">Enfin, après avoir placé tous les vaisseaux, et cliqué sur le bouton jouer, la partie se déroulera tour à tour avec l'ordinateur, et se soldera par une victoire... ou une défaite!</p> 
 
 
-p align="center">Bonne chance Capitaine, vous en aurez besoin!</p>
+<p align="center">Bonne chance Capitaine, vous en aurez besoin!</p>
