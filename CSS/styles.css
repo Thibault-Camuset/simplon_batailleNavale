@@ -512,7 +512,7 @@ de l'ordinateur */
 
 #shipPlacement {
     position: fixed;
-    top:55%;
+    top:60%;
     left:4.5%;
     width:8%;
     height:5%;
@@ -606,6 +606,7 @@ de l'ordinateur */
 .containerCorvetteVertical {
     display:flex;
     flex-direction: column !important;
+    margin-right:1vw;
 }
 
 .containerFregate {
@@ -615,6 +616,7 @@ de l'ordinateur */
 .containerFregateVertical {
     display:flex;
     flex-direction: column !important;
+    margin-right:1vw;
 }
 
 .containerNavette {
@@ -624,6 +626,7 @@ de l'ordinateur */
 .containerNavetteVertical {
     display:flex;
     flex-direction: column !important;
+    margin-right:1vw;
 }
 
 .containerCuirasse {
@@ -633,6 +636,7 @@ de l'ordinateur */
 .containerCuirasseVertical {
     display:flex;
     flex-direction: column !important;
+    margin-right:1vw;
 }
 
 .containerCroiseur {
@@ -642,6 +646,8 @@ de l'ordinateur */
 .containerCroiseurVertical {
     display:flex;
     flex-direction: column !important;
+    margin-right:1vw;
+
 }
 
 .containerCargo {
@@ -651,6 +657,8 @@ de l'ordinateur */
 .containerCargoVertical {
     display:flex;
     flex-direction: column !important;
+    margin-right:1vw;
+
 }
 
 .containerVaisseau_de_Commandement {
@@ -660,6 +668,8 @@ de l'ordinateur */
 .containerVaisseau_de_CommandementVertical {
     display:flex;
     flex-direction: column !important;
+    margin-right:1vw;
+
 }
 
 
