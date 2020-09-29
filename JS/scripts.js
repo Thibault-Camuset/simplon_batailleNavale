@@ -30,6 +30,7 @@ let jupiter = document.getElementById('imgJupiters');
 let mars = document.getElementById('imgMars');
 let uranus = document.getElementById('imgUranus');
 let mercure = document.getElementById('imgMercure');
+let venus = document.getElementById('imgVenus');
 let ponyJoke = document.getElementById('ponyJoke');
 let themeColorGreen = document.getElementById('themeColorGreen');
 let themeColorRed = document.getElementById('themeColorRed');
@@ -1049,4 +1050,8 @@ uranus.addEventListener('click', () => {
         uranus.classList.remove('uranusPos3');
         uranus.classList.add('uranusPos1');
     }
+})
+
+venus.addEventListener('click', () => {
+    venus.classList.add('shining');
 })

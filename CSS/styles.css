@@ -719,6 +719,70 @@ de l'ordinateur */
     left:40vw;
 }
 
+@keyframes shining {
+   1% {
+    border-radius: none;
+    filter: drop-shadow(0 0 0 rgba(255, 255, 0,.6)) 
+    drop-shadow(-1px -1px 0 rgba(255, 255, 0,.6));
+    transform: scale(1);
+   }
+   10% {
+    filter: drop-shadow(0 0 40px rgba(255, 255, 0,.6)) 
+    drop-shadow(-1px -1px 0 rgba(255, 255, 0,.6));
+    transform: scale(1);
+   }
+   20% {
+   filter: drop-shadow(0 0 0 rgba(255, 255, 0,.6)) 
+    drop-shadow(-1px -1px 0 rgba(255, 255, 0,.6));
+     transform: scale(1);
+   }
+   30% {
+     filter: drop-shadow(0 0 40px rgba(255, 255, 0,.6)) 
+    drop-shadow(-1px -1px 0 rgba(255, 255, 0,.6));
+     transform: scale(1);
+   }
+   40% {
+     filter: drop-shadow(0 0 0 rgba(255, 255, 0,.6)) 
+    drop-shadow(-1px -1px 0 rgba(255, 255, 0,.6));
+     transform: scale(1);
+   }
+   50% {
+    filter: drop-shadow(0 0 40px rgba(255, 255, 0,.6)) 
+    drop-shadow(-1px -1px 0 rgba(255, 255, 0,.6));
+    transform: scale(1);
+   }
+   60% {
+    filter: drop-shadow(0 0 0 rgba(255, 255, 0,.6)) 
+    drop-shadow(-1px -1px 0 rgba(255, 255, 0,.6));
+    transform: scale(1);   }
+
+   70% {
+    filter: drop-shadow(0 0 40px rgba(255, 255, 0,.6)) 
+    drop-shadow(-1px -1px 0 rgba(255, 255, 0,.6));
+    transform: scale(1);   }
+   80% {
+    filter: drop-shadow(0 0 0 rgba(255, 255, 0,.6)) 
+    drop-shadow(-1px -1px 0 rgba(255, 255, 0,.6));
+    transform: scale(1);   }
+
+   90% {
+    filter: drop-shadow(0 0 40px rgba(255, 255, 0,.6)) 
+    drop-shadow(-1px -1px 0 rgba(255, 255, 0,.6));
+    transform: scale(1);   }
+   99% {
+    filter: drop-shadow(0 0 0 rgba(255, 255, 0,.6)) 
+    drop-shadow(-1px -1px 0 rgba(255, 255, 0,.6));
+    transform: scale(1);
+   }
+ }
+
+.shining {
+  animation-timing-function: ease-out;
+  transform-origin: bottom center;
+  animation-name: shining;
+  animation-duration: 5s;
+}
+
 
 
 /* Classe hidden utilisée sur toutes les pages pour afficher/cacher les éléments */
