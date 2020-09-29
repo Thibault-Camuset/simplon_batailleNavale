@@ -479,7 +479,7 @@ de l'ordinateur */
 }
 
 .spotMiss {
-    background-color:white !important;
+    background-color:gray !important;
 }
 
 #playerGrid {
