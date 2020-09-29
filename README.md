@@ -49,17 +49,17 @@ Il faut uniquement veiller à ce que les scripts/le javascript ne soit pas désa
 ---
 
 <p align="center"><img src="https://www.developer-road.com/Bataille-Spatiale/IMG/tutorial1.jpg" width="50%" align="center"></p>
-<p align="center">Page d'accueil, vous pouvez entrer votre Pseudo ici, choisir votre thème de couleurs et cliquer sur le bouton pour passer à la prochaine étape! Il n'est pas impossible qu'il y ait certaines choses de cachées sur cette page...</p>
+<p align="center">Page d'accueil, vous pouvez entrer votre pseudo ici, choisir votre thème de couleurs et cliquer sur le bouton pour passer à la prochaine étape! Il n'est pas impossible qu'il y ait certaines choses cachées sur cette page...</p>
 
 ---
 
 <p align="center"><img src="https://www.developer-road.com/Bataille-Spatiale/IMG/tutorial2.jpg" width="50%" align="center"></p>
-<p align="center">Sélection du mode de difficulté, qui va définir combien de vaisseau le joueur pourra placer! Cliquez sur le bouton pour la prochaine étape!</p>
+<p align="center">Sélection du mode de difficulté, qui va définir combien de vaisseaux le joueur pourra placer! Cliquez sur le bouton pour la prochaine étape!</p>
 
 ---
 
 <p align="center"><img src="https://www.developer-road.com/Bataille-Spatiale/IMG/tutorial3.jpg" width="50%" align="center"></p>
-<p align="center">Il est temps de placer les vaisseaux du joueur! Déplacez les uns à uns sur la grille à l'endroit désiré. Il est possible de changer leur sens avant de les placer en cliquant sur le bouton!</p>
+<p align="center">Il est temps de placer les vaisseaux du joueur! Déplacez-les uns à uns sur la grille à l'endroit désiré. Il est possible de changer leur sens avant de les placer en cliquant sur le bouton!</p>
 
 ---
 
