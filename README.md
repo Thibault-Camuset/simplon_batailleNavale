@@ -64,4 +64,7 @@ Il faut uniquement veiller à ce que les scripts/le javascript ne soit pas désa
 ---
 
 <p align="center"><img src="https://www.developer-road.com/Bataille-Spatiale/IMG/tutorial4.jpg" width="50%" align="center"></p>
-<p align="center">Enfin, après avoir placé tous les vaisseaux, et cliqué sur le bouton "Jouer", la partie se déroulera tour par tour, et se soldera par une victoire... ou une défaite! Bonne chance!</p>
+<p align="center">Enfin, après avoir placé tous les vaisseaux, et cliqué sur le bouton Jouer, la partie se déroulera tour par tour, et se soldera par une victoire... ou une défaite!</p> 
+
+
+p align="center">Bonne chance Capitaine, vous en aurez besoin!</p>
