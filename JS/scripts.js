@@ -1054,4 +1054,7 @@ uranus.addEventListener('click', () => {
 
 venus.addEventListener('click', () => {
     venus.classList.add('shining');
+    window.setTimeout(() => {
+        imgVenus.classList.remove('shining');
+    }, 5000);
 })
