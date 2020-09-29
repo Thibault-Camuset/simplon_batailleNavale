@@ -875,8 +875,7 @@ function winConditions() {
     }
 
 }
-console.log('score list outside');
-console.log(scoreList);
+
 // Fonction qui se lance quand la partie est gagné par le joueur ou l'ordinateur, et appelle la page de scores
 function gameOver(status) {
     gameOverStatus = true;
@@ -935,7 +934,6 @@ function loadItemsFromStorage() {
     
     // récuparation des scores et du counter, pour les utiliser ensuite
     const storageScores = localStorage.getItem("score-items");
-    console.log(localStorage.getItem("score-items"));
 
     if (storageScores != null) {
     scoreList = JSON.parse(storageScores);
