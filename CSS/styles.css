@@ -12,7 +12,43 @@ body {
 }
 
 
+#back-to-website {
+    position:fixed;
+    top:2vh;
+    left:1vw;
+    width:7vh;
+    height:7vh;
+}
 
+.linkGreen {
+    background:url('../IMG/returnGreen.png');
+    background-size: contain;
+}
+
+.linkRed {
+    background:url('../IMG/returnRed.png');
+    background-size: contain;
+}
+
+.linkPurple {
+    background:url('../IMG/returnPurple.png');
+    background-size: contain;
+}
+
+.linkOrange {
+    background:url('../IMG/returnOrange.png');
+    background-size: contain;
+}
+
+.linkBlue {
+    background:url('../IMG/returnBlue.png');
+    background-size: contain;
+}
+
+.linkPink {
+    background:url('../IMG/returnPink.png');
+    background-size: contain;
+}
 
 
 

@@ -46,6 +46,7 @@ let chatBox = document.getElementById('chat-box');
 let turnBox = document.getElementById('turn-box');
 let chatContainer = document.getElementById('chat-container');
 let gameOverTab = document.getElementById('game-over-tab');
+let linkBack = document.getElementById('back-to-website');
 
 // Pour être sûr que les boites de dialogues soient bien vides.
 chatBox.innerHTML = "";
@@ -1012,6 +1013,9 @@ function changecolor(color) {
     turnBox.classList.add('border' + color);
     gameOverTab.classList.remove('borderPink', 'borderRed', 'borderPurple', 'borderOrange', 'borderBlue', 'borderGreen');
     gameOverTab.classList.add('border' + color);
+    linkBack.classList.remove('linkGreen', 'linkRed', 'linkPurple', 'linkOrange', 'linkBlue', 'linkPink');
+    linkBack.classList.add('link'+color);
+    //linkBack.style.background = "url('../IMG/return'+color+'.png')";
 }
 
 // Easters Eggs.... Et... PONEYS!!!
